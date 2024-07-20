@@ -1,0 +1,27 @@
+@import '../../../assets/sass/_mixin.scss';
+@import '../../../assets/sass/_variable.scss';
+
+.header-top {
+    @include container;
+    border-bottom: 1px solid $lightGray;
+
+    span[data-hover] {
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: attr(data-hover);
+            transition: transform .2s linear;
+            box-sizing: border-box;
+        }
+
+        &::after {
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            content: attr(data-hover);
+            transition: transform .2s linear;
+            transform: translateY(-20px);
+        }
+    }
+}

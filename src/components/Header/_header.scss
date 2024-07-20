@@ -1,10 +1,18 @@
-.header {
+@import '../../assets//sass/_mixin';
+@import '../../assets/sass/variable';
+
+header {
+    @include container;
+
+    .search{
+        width: 40%;
+    }
     .right {
         .phone {
             span:nth-of-type(1) {
                 font-size: 9px;
                 letter-spacing: .3px;
-                color: #4E4E4E;
+                color: $darkGray;
             }
 
             span:nth-of-type(2) {
