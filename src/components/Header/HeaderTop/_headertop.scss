@@ -15,3 +15,13 @@
         }
     }
 }
+
+@media(max-width: 1024px) {
+    .header-top {
+        background-color: $lightGray;
+
+        .containers .center {
+            display: none !important;
+        }
+    }
+}

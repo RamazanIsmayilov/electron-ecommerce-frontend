@@ -12,6 +12,7 @@ import { Popover } from 'antd';
 import { ReactComponent as BellIcon } from "../../assets/icons/bell.svg";
 import HeaderTop from './HeaderTop/HeaderTop';
 import HeaderBottom from './HeaderBottom/HeaderBottom';
+import MobileNav from './MobileNav/MobileNav';
 
 const content = (
   <div>
@@ -51,7 +52,7 @@ const Header: React.FC = () => {
             </div>
             <div className="compare">
               <Badge icon={<SlRefresh className='fs-4' />} count={0} />
-            </div>
+            </div>  
             <div className="wishlist">
               <Badge icon={<SlHeart className='fs-4' />} count={0} />
             </div>
@@ -67,6 +68,7 @@ const Header: React.FC = () => {
         </div>
       </header>
       <HeaderBottom />
+      <MobileNav />
     </>
   )
 }

@@ -3,7 +3,7 @@ import { VscChevronDown } from "react-icons/vsc";
 
 interface DropdownProps {
     title: string;
-    menuItems: string[];
+    menuItems: string[];    
 }
 
 const Dropdown: React.FC<DropdownProps> = ({ title, menuItems }) => {

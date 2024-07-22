@@ -1,0 +1,26 @@
+@import '../../../assets/sass/_mixin.scss';
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    box-shadow: -4px -2px 30px 2px rgb(0 0 0 / 17%);
+    background-color: #fff;
+    padding: 10px 0;
+
+    .containers {
+        @include container;
+
+        p {
+            font-size: 12px;
+        }
+
+    }
+}
+
+@media(max-width: 1024px) {
+    .mobile-nav {
+        display: block;
+    }
+}

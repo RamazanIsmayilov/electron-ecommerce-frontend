@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CategoryMenu from '../../CategoryMenu/CategoryMenu'
 import { Link, NavLink } from 'react-router-dom'
 import { GoHome } from "react-icons/go";
@@ -6,8 +6,20 @@ import { IoMdBook } from "react-icons/io";
 import { LuContact2 } from "react-icons/lu";
 import { CgShoppingBag } from "react-icons/cg";
 import { BiConversation } from "react-icons/bi";
+import { GiHamburgerMenu } from "react-icons/gi";
+import Logo from '../../../assets/images/Header/logo.png'
+import OffcanvasMenu from '../../OffcanvasMenu/OffcanvasMenu';
+import Badge from '../../Badge/Badge';
+import { HiOutlineShoppingBag, HiOutlineUserCircle } from 'react-icons/hi2';
+import { SlHeart, SlRefresh } from 'react-icons/sl';
 
 const HeaderBottom: React.FC = () => {
+
+  const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
+
+  const toggleOffcanvas = () => {
+    setIsOffcanvasOpen(!isOffcanvasOpen);
+  };
   return (
     <div className='header-bottom'>
       <div className="containers d-flex align-items-center justify-content-between">
@@ -56,8 +68,30 @@ const HeaderBottom: React.FC = () => {
           <Link to='/shop' className='text-uppercase fw-bold'>Super Sale!</Link>
           <Link to='/shop' className='text-uppercase fw-bold'>Outlet</Link>
         </div>
+        <div className="mobile">
+          <div className='d-flex align-items-center gap-3'>
+            <button onClick={toggleOffcanvas} className='bg-transparent border-0 fs-4'><GiHamburgerMenu /></button>
+            {isOffcanvasOpen && <OffcanvasMenu />}
+            <img width={110} src={Logo} alt="logo" />
+          </div>
+          <div className="d-flex gap-3">
+            <div className="cart">
+              <Badge icon={<HiOutlineShoppingBag className='fs-4' />} count={0} />
+            </div>
+            <div className="compare">
+              <Badge icon={<SlRefresh className='fs-4' />} count={0} />
+            </div>
+            <div className="wishlist">
+              <Badge icon={<SlHeart className='fs-4' />} count={0} />
+            </div>
+            <div className="account">
+              <button className='bg-transparent border-0 pe-0'><HiOutlineUserCircle className='fs-3' /></button>
+            </div>
+          </div>
+      </div>
       </div>
     </div>
+    
   )
 }
 
