@@ -24,43 +24,45 @@ const Header: React.FC = () => {
   return (
     <>
       <HeaderTop />
-      <header className='d-flex align-items-center justify-content-between py-4'>
-        <div className="logo">
-          <Link to='/'>
-            <img width={110} src={Logo} alt="logo" />
-          </Link>
-        </div>
-        <div className="search">
-          <Search />
-        </div>
-        <div className="right d-flex gap-3">
-          <div className="phone">
-            <Link to='tel:2809003434' className='d-flex align-items-center gap-3'>
-              <div className="icon">
-                <ImWhatsapp className='wp-icon fs-3 text-success' />
-              </div>
-              <div className="content d-flex flex-column gap-1">
-                <span className='text-uppercase fw-bold'>Call anytime</span>
-                <span className='text-dark fw-bold'>280 900 3434</span>
-              </div>
+      <header >
+        <div className="containers d-flex align-items-center justify-content-between py-4">
+          <div className="logo">
+            <Link to='/'>
+              <img width={110} src={Logo} alt="logo" />
             </Link>
           </div>
-          <div className="cart">
-            <Badge icon={<HiOutlineShoppingBag className='fs-4' />} count={0} />
+          <div className="search">
+            <Search />
           </div>
-          <div className="compare">
-            <Badge icon={<SlRefresh className='fs-4' />} count={0} />
-          </div>
-          <div className="wishlist">
-            <Badge icon={<SlHeart className='fs-4' />} count={0} />
-          </div>
-          <div className="account">
-            <button className='bg-transparent border-0 pe-0'><HiOutlineUserCircle className='fs-3' /></button>
-          </div>
-          <div className="notification">
-            <Popover placement="bottomRight" content={content}>
-              <button className='bg-transparent border-0 p-0'><BellIcon /></button>
-            </Popover>
+          <div className="right d-flex gap-3">
+            <div className="phone">
+              <Link to='tel:2809003434' className='d-flex align-items-center gap-3'>
+                <div className="icon">
+                  <ImWhatsapp className='wp-icon fs-3 text-success' />
+                </div>
+                <div className="content d-flex flex-column gap-1">
+                  <span className='text-uppercase fw-bold'>Call anytime</span>
+                  <span className='text-dark fw-bold'>280 900 3434</span>
+                </div>
+              </Link>
+            </div>
+            <div className="cart">
+              <Badge icon={<HiOutlineShoppingBag className='fs-4' />} count={0} />
+            </div>
+            <div className="compare">
+              <Badge icon={<SlRefresh className='fs-4' />} count={0} />
+            </div>
+            <div className="wishlist">
+              <Badge icon={<SlHeart className='fs-4' />} count={0} />
+            </div>
+            <div className="account">
+              <button className='bg-transparent border-0 pe-0'><HiOutlineUserCircle className='fs-3' /></button>
+            </div>
+            <div className="notification">
+              <Popover placement="bottomRight" content={content}>
+                <button className='bg-transparent border-0 p-0'><BellIcon /></button>
+              </Popover>
+            </div>
           </div>
         </div>
       </header>

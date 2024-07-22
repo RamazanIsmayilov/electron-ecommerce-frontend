@@ -1,0 +1,77 @@
+@import '../../assets/sass/_variable.scss';
+
+.category-menu {
+    position: relative;
+
+    button {
+        font-size: 14px;
+        font-weight: 600;
+        background-color: $brightBlue;
+        color: $white;
+    }
+
+    .menu {
+        position: absolute;
+        box-shadow: -4px -2px 30px 2px rgb(0 0 0 / 17%);
+        display: none;
+        width: 216px;
+
+        .list {
+            padding: 5px 20px;
+            border-bottom: 1px solid $lightGray;
+            font-size: 13px;
+            transition: .1s;
+            position: relative;
+
+            a {
+                color: $black;
+            }
+
+            &:hover {
+                background-color: $brightBlue;
+
+                a {
+                    color: $white;
+                }
+
+                .submenu {
+                    display: block;
+                }
+            }
+
+            img {
+                background-color: #eee;
+            }
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            box-shadow: -4px -2px 30px 2px rgb(0 0 0 / 17%);
+            min-width: 222px;
+
+            .list {
+                color: $black;
+                transition: .1s;
+
+                a {
+                    color: $black;
+                }
+
+                &:hover {
+                    color: $white;
+
+                    a {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    &:hover .menu {
+        display: block;
+    }
+}

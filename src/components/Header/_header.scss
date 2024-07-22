@@ -2,21 +2,26 @@
 @import '../../assets/sass/variable';
 
 header {
-    @include container;
+    border-bottom: 1px solid $lightGray;
 
-    .search{
-        width: 40%;
-    }
-    .right {
-        .phone {
-            span:nth-of-type(1) {
-                font-size: 9px;
-                letter-spacing: .3px;
-                color: $darkGray;
-            }
+    .containers {
+        @include container;
 
-            span:nth-of-type(2) {
-                font-size: 18px;
+        .search {
+            width: 40%;
+        }
+
+        .right {
+            .phone {
+                span:nth-of-type(1) {
+                    font-size: 9px;
+                    letter-spacing: .3px;
+                    color: $darkGray;
+                }
+
+                span:nth-of-type(2) {
+                    font-size: 18px;
+                }
             }
         }
     }

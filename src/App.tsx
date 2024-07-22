@@ -22,7 +22,6 @@ const App: React.FC = () => {
     <>
       <BrowserRouter>
         <Header />
-        <Footer />
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='*' element={<NotFound />}></Route>
@@ -31,7 +30,7 @@ const App: React.FC = () => {
           <Route path='/faq' element={<Faq />}></Route>
           <Route path='/blog' element={<BlogList />}></Route>
           <Route path='/blogdetails' element={<BlogDetails />}></Route>
-          <Route path='/product' element={<ProductList />}></Route>
+          <Route path='/shop' element={<ProductList />}></Route>
           <Route path='/productdetails' element={<ProductDetails />}></Route>
           <Route path='/wishlist' element={<Wishlist />}></Route>
           <Route path='/addtocart' element={<AddToCart />}></Route>
@@ -39,6 +38,7 @@ const App: React.FC = () => {
           <Route path='/register' element={<Register />}></Route>
           <Route path='/forgotpassword' element={<ForgotPassword />}></Route>
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   )

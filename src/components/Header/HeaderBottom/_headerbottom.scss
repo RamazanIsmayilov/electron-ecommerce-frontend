@@ -1,0 +1,44 @@
+@import '../../../assets/sass/_mixin.scss';
+@import '../../../assets/sass/_variable.scss';
+
+.header-bottom {
+    border-bottom: 1px solid $lightGray;
+
+    .containers {
+        @include container;
+    }
+
+    .main-menu {
+        color: $black;
+
+        nav ul li a {
+            color: $black;
+        }
+
+        .active {
+            color: $brightBlue;
+        }
+    }
+
+    .right {
+        a {
+            font-size: 12px;
+        }
+
+        a:nth-last-of-type(4) {
+            color: #019267;
+        }
+
+        a:nth-last-of-type(3) {
+            color: #1e96fc;
+        }
+
+        a:nth-last-of-type(2) {
+            color: #072ac8;
+        }
+
+        a:nth-last-of-type(1) {
+            color: #e44b4b;
+        }
+    }
+}
