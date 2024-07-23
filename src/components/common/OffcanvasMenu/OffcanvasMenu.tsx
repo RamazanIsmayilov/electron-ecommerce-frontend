@@ -5,6 +5,7 @@ import { GoHome } from 'react-icons/go'
 import { IoMdBook } from 'react-icons/io'
 import { LuContact2 } from 'react-icons/lu'
 import { Link } from 'react-router-dom'
+import Accardion from '../Accardion/Accardion'
 
 const OffcanvasMenu: React.FC = () => {
   const [showMainMenu, setShowMainMenu] = useState(true)
@@ -20,8 +21,14 @@ const OffcanvasMenu: React.FC = () => {
     setShowCategoriesMenu(true)
   }
 
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggleAccardion = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  }
+
   return (
-    <div className='offcanvas-menu bg'>
+    <div className='offcanvas-menu'>
       <div className="heading">
         <button
           className='text-uppercase border-0 fw-bold'
@@ -43,7 +50,7 @@ const OffcanvasMenu: React.FC = () => {
       </div>
       <div className="menu">
         <div className={`${showMainMenu ? 'd-block' : 'd-none'}`}>
-          <nav>
+          <nav className='mb-5'>
             <ul>
               <li>
                 <Link to='/' className='d-flex align-items-center gap-2 text-dark'>
@@ -77,6 +84,27 @@ const OffcanvasMenu: React.FC = () => {
               </li>
             </ul>
           </nav>
+          <Accardion
+            title="Languages"
+            menuItems={['Azerbaijan', 'English', 'Russian']}
+            index={1}
+            isOpen={openIndex === 1}
+            onToggle={toggleAccardion}
+          />
+          <Accardion
+            title="Country"
+            menuItems={['United States(USD)', 'Deutschland', 'Vue']}
+            index={2}
+            isOpen={openIndex === 2}
+            onToggle={toggleAccardion}
+          />
+          <Accardion
+            title="Quick Help"
+            menuItems={['Order Tracking', 'Contact', 'FAQ', 'Find Us']}
+            index={3}
+            isOpen={openIndex === 3}
+            onToggle={toggleAccardion}
+          />
         </div>
         <div className={`${showCategoriesMenu ? 'd-block' : 'd-none'}`}>
           <nav>

@@ -1,0 +1,22 @@
+.accordion {
+    button {
+        background-color: #F7F7F8;
+        padding: 18px;
+        font-size: 14px;
+        letter-spacing: .6px;
+        border: 1px solid #eaebed;
+    }
+
+    nav ul li {
+        border-bottom: 1px solid #eaebed;
+        padding: 18px 28px !important;
+
+        a {
+            font-size: 14px;
+        }
+
+        &:hover {
+            background-color: #F7F7F8;
+        }
+    }
+}

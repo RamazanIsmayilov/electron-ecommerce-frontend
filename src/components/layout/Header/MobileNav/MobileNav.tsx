@@ -5,7 +5,7 @@ import { IoChevronBackCircleOutline } from "react-icons/io5";
 import { IoStorefrontOutline } from "react-icons/io5";
 import { SlHeart } from 'react-icons/sl';
 import { Link } from 'react-router-dom';
-import Badge from '../../Badge/Badge';
+import Badge from '../../../common/Badge/Badge';
 
 const MobileNav: React.FC = () => {
     return (

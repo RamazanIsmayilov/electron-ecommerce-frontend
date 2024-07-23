@@ -1,18 +1,18 @@
 import React from 'react'
-import Logo from '../../assets/images/Header/logo.png'
+import Logo from '../../../assets/images/Header/logo.png'
 import { Link } from 'react-router-dom'
-import Search from '../Search/Search'
 import { ImWhatsapp } from "react-icons/im";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { SlRefresh } from "react-icons/sl";
 import { SlHeart } from "react-icons/sl";
 import { HiOutlineUserCircle } from "react-icons/hi2";
-import Badge from '../Badge/Badge';
 import { Popover } from 'antd';
-import { ReactComponent as BellIcon } from "../../assets/icons/bell.svg";
+import { ReactComponent as BellIcon } from "../../../assets/icons/bell.svg";
 import HeaderTop from './HeaderTop/HeaderTop';
 import HeaderBottom from './HeaderBottom/HeaderBottom';
 import MobileNav from './MobileNav/MobileNav';
+import Badge from '../../common/Badge/Badge';
+import Search from '../../common/Search/Search';
 
 const content = (
   <div>
@@ -26,7 +26,7 @@ const Header: React.FC = () => {
     <>
       <HeaderTop />
       <header >
-        {/* <div className="containers d-flex align-items-center justify-content-between py-4">
+        <div className="containers d-flex align-items-center justify-content-between py-4">
           <div className="logo">
             <Link to='/'>
               <img width={110} src={Logo} alt="logo" />
@@ -65,7 +65,7 @@ const Header: React.FC = () => {
               </Popover>
             </div>
           </div>
-        </div> */}
+        </div>
       </header>
       <HeaderBottom />
       <MobileNav />

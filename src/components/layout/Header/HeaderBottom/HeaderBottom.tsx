@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import CategoryMenu from '../../CategoryMenu/CategoryMenu'
 import { Link, NavLink } from 'react-router-dom'
 import { GoHome } from "react-icons/go";
 import { IoMdBook } from "react-icons/io";
@@ -7,11 +6,12 @@ import { LuContact2 } from "react-icons/lu";
 import { CgShoppingBag } from "react-icons/cg";
 import { BiConversation } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";
-import Logo from '../../../assets/images/Header/logo.png'
-import OffcanvasMenu from '../../OffcanvasMenu/OffcanvasMenu';
-import Badge from '../../Badge/Badge';
+import Logo from '../../../../assets/images/Header/logo.png'
 import { HiOutlineShoppingBag, HiOutlineUserCircle } from 'react-icons/hi2';
 import { SlHeart, SlRefresh } from 'react-icons/sl';
+import OffcanvasMenu from '../../../common/OffcanvasMenu/OffcanvasMenu';
+import CategoryMenu from '../../../common/CategoryMenu/CategoryMenu';
+import Badge from '../../../common/Badge/Badge';
 
 const HeaderBottom: React.FC = () => {
 
@@ -22,7 +22,7 @@ const HeaderBottom: React.FC = () => {
   };
   return (
     <div className='header-bottom'>
-      {/* <div className="containers d-flex align-items-center justify-content-between">
+      <div className="containers d-flex align-items-center justify-content-between">
         <div className="left d-flex align-items-center gap-4">
           <div className="category-menu"><CategoryMenu /></div>
           <div className="main-menu">
@@ -89,8 +89,8 @@ const HeaderBottom: React.FC = () => {
             </div>
           </div>
         </div>
-      </div> */}
-      <OffcanvasMenu/ >
+      </div>
+      <OffcanvasMenu />
     </div>
 
   )

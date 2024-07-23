@@ -6,6 +6,7 @@
     position: absolute;
     z-index: 1;
     background-color: #fff;
+    display: none;
 
     .heading {
         border-bottom: 2px solid #eaebed;
@@ -21,13 +22,13 @@
     .menu {
         nav ul li {
             border-bottom: 1px solid #eaebed;
+            padding: 18px;
 
             a {
-                padding: 18px;
                 font-size: 14px;
             }
 
-            &:hover{
+            &:hover {
                 background-color: #F7F7F8;
             }
         }

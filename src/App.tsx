@@ -14,8 +14,9 @@ import Wishlist from './pages/Wishlist/Wishlist'
 import AddToCart from './pages/AddToCart/AddToCart'
 import Faq from './pages/Faq/Faq'
 import NotFound from './pages/NotFound/NotFound'
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
+import Header from './components/layout/Header/Header'
+import Footer from './components/layout/Footer/Footer'
+
 
 const App: React.FC = () => {
   return (

@@ -3,7 +3,7 @@ import { FaBars } from "react-icons/fa";
 import { VscChevronDown } from "react-icons/vsc";
 import { MdChevronRight } from "react-icons/md";
 import { Link } from 'react-router-dom';
-import { menuItem } from '../../data/category-menu'
+import { menuItem } from '../../../data/category-menu';
 
 const CategoryMenu: React.FC = () => {
     return (

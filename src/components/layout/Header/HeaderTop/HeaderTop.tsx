@@ -1,16 +1,16 @@
 import React from 'react'
-import Dropdown from '../../Dropdown/Dropdown';
 import { FaRegNoteSticky } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import Dropdown from '../../../common/Dropdown/Dropdown';
 
 const HeaderTop: React.FC = () => {
   return (
     <div className='header-top'>
-      {/* <div className="containers d-flex align-items-center justify-content-between py-2">
+      <div className="containers d-flex align-items-center justify-content-between py-2">
         <div className="left d-flex align-items-center gap-2">
           <div className="languages">
             <Dropdown
@@ -35,7 +35,7 @@ const HeaderTop: React.FC = () => {
           <Link to='/'><FaTwitter className='text-dark' /></Link>
           <Link to='/'><FaWhatsapp className='text-dark' /></Link>
         </div>
-      </div> */}
+      </div>
     </div>
   )
 }

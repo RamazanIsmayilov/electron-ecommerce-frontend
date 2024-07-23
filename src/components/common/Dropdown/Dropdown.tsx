@@ -3,7 +3,7 @@ import { VscChevronDown } from "react-icons/vsc";
 
 interface DropdownProps {
     title: string;
-    menuItems: string[];    
+    menuItems: string[];
 }
 
 const Dropdown: React.FC<DropdownProps> = ({ title, menuItems }) => {
@@ -14,8 +14,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, menuItems }) => {
     };
 
     return (
-        <div
-            className="dropdown">
+        <div className="dropdown">
             <button className="d-flex align-items-center gap-2 bg-transparent border-0"
                 onMouseEnter={toggleMenu} onMouseLeave={toggleMenu}>
                 {title}
