@@ -51,6 +51,7 @@
 
 @media(max-width: 1024px) {
     .header-bottom {
+        border: 0;
 
         .containers {
 
@@ -59,10 +60,7 @@
                 display: none !important;
             }
             .mobile {
-                display: block !important;
                 display: flex !important;
-                align-items: center !important;
-                justify-content: space-between !important;
             }
         }
 

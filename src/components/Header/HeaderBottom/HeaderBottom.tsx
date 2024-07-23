@@ -22,7 +22,7 @@ const HeaderBottom: React.FC = () => {
   };
   return (
     <div className='header-bottom'>
-      <div className="containers d-flex align-items-center justify-content-between">
+      {/* <div className="containers d-flex align-items-center justify-content-between">
         <div className="left d-flex align-items-center gap-4">
           <div className="category-menu"><CategoryMenu /></div>
           <div className="main-menu">
@@ -68,7 +68,7 @@ const HeaderBottom: React.FC = () => {
           <Link to='/shop' className='text-uppercase fw-bold'>Super Sale!</Link>
           <Link to='/shop' className='text-uppercase fw-bold'>Outlet</Link>
         </div>
-        <div className="mobile">
+        <div className="mobile align-items-center justify-content-between w-100">
           <div className='d-flex align-items-center gap-3'>
             <button onClick={toggleOffcanvas} className='bg-transparent border-0 fs-4'><GiHamburgerMenu /></button>
             {isOffcanvasOpen && <OffcanvasMenu />}
@@ -88,10 +88,11 @@ const HeaderBottom: React.FC = () => {
               <button className='bg-transparent border-0 pe-0'><HiOutlineUserCircle className='fs-3' /></button>
             </div>
           </div>
-      </div>
-      </div>
+        </div>
+      </div> */}
+      <OffcanvasMenu/ >
     </div>
-    
+
   )
 }
 

@@ -1,0 +1,35 @@
+.offcanvas-menu {
+    box-shadow: 0 15px 30px -4px rgb(0 0 0/17%);
+    display: inline-block;
+    height: 100vh;
+    overflow-y: auto;
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+
+    .heading {
+        border-bottom: 2px solid #eaebed;
+        display: inline-block;
+
+        button {
+            font-size: 13px;
+            padding: 16px 80px !important;
+            letter-spacing: .6px;
+        }
+    }
+
+    .menu {
+        nav ul li {
+            border-bottom: 1px solid #eaebed;
+
+            a {
+                padding: 18px;
+                font-size: 14px;
+            }
+
+            &:hover{
+                background-color: #F7F7F8;
+            }
+        }
+    }
+}

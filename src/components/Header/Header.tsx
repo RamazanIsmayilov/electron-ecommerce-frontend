@@ -26,7 +26,7 @@ const Header: React.FC = () => {
     <>
       <HeaderTop />
       <header >
-        <div className="containers d-flex align-items-center justify-content-between py-4">
+        {/* <div className="containers d-flex align-items-center justify-content-between py-4">
           <div className="logo">
             <Link to='/'>
               <img width={110} src={Logo} alt="logo" />
@@ -65,7 +65,7 @@ const Header: React.FC = () => {
               </Popover>
             </div>
           </div>
-        </div>
+        </div> */}
       </header>
       <HeaderBottom />
       <MobileNav />

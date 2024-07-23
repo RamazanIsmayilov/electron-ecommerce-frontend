@@ -4,7 +4,7 @@ import { IoSearch } from "react-icons/io5";
 const Search: React.FC = () => {
     return (
         <>
-            <form className="d-flex align-items-center d-none d-md-flex">
+            <form className="d-flex align-items-center">
                 <input className="form-control" placeholder="Search for products" />
                 <div className="d-flex align-items-center">
                     <select>

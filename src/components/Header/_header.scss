@@ -28,17 +28,20 @@ header {
 }
 
 @media(max-width: 1024px) {
-    header .containers {
-        .logo {
-            display: none;
-        }
-
-        .search {
-            width: 100%;
-        }
-
-        .right {
-            display: none !important;
+    header {
+        border: 0;
+        .containers {
+            .logo {
+                display: none;
+            }
+    
+            .search {
+                width: 100%;
+            }
+    
+            .right {
+                display: none !important;
+            }
         }
     }
 }
