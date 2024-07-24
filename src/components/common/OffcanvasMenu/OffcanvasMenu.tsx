@@ -4,10 +4,15 @@ import { CgShoppingBag } from 'react-icons/cg'
 import { GoHome } from 'react-icons/go'
 import { IoMdBook } from 'react-icons/io'
 import { LuContact2 } from 'react-icons/lu'
+import { IoCloseOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom'
 import Accardion from '../Accardion/Accardion'
 
-const OffcanvasMenu: React.FC = () => {
+interface OffcanvasMenuProps {
+  onClose: () => void;
+}
+
+const OffcanvasMenu: React.FC<OffcanvasMenuProps> = ({ onClose }) => {
   const [showMainMenu, setShowMainMenu] = useState(true)
   const [showCategoriesMenu, setShowCategoriesMenu] = useState(false)
 
@@ -47,6 +52,7 @@ const OffcanvasMenu: React.FC = () => {
         >
           Categories
         </button>
+        <button onClick={onClose} className='close-btn'><IoCloseOutline /></button>
       </div>
       <div className="menu">
         <div className={`${showMainMenu ? 'd-block' : 'd-none'}`}>

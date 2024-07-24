@@ -71,7 +71,6 @@ const HeaderBottom: React.FC = () => {
         <div className="mobile align-items-center justify-content-between w-100">
           <div className='d-flex align-items-center gap-3'>
             <button onClick={toggleOffcanvas} className='bg-transparent border-0 fs-4'><GiHamburgerMenu /></button>
-            {isOffcanvasOpen && <OffcanvasMenu />}
             <img width={110} src={Logo} alt="logo" />
           </div>
           <div className="d-flex gap-3">
@@ -90,9 +89,8 @@ const HeaderBottom: React.FC = () => {
           </div>
         </div>
       </div>
-      <OffcanvasMenu />
+      {isOffcanvasOpen && <OffcanvasMenu onClose={toggleOffcanvas} />}
     </div>
-
   )
 }
 

@@ -1,0 +1,58 @@
+@import '../../../assets/sass/_mixin.scss';
+@import '../../../assets/sass/_variable.scss';
+
+.footer {
+    background-color: #161616;
+
+    .containers {
+        @include container;
+
+        .left {
+            h2 {
+                font-size: 25px;
+            }
+
+            .download-apps span {
+                font-size: 12px;
+            }
+
+            .subscribe {
+                input {
+                    background: transparent;
+                    border: 1px solid #343131;
+
+                    &:focus {
+                        box-shadow: none;
+                    }
+
+                    &::placeholder {
+                        font-size: 13px;
+                        color: #fff;
+                    }
+                }
+
+                button {
+                    background: transparent;
+                    border: 1px solid #343131;
+                    color: #fff;
+                    font-size: 13px;
+                }
+
+                span{
+                    font-size: 13px;
+                    color: #949494;
+                }
+            }
+        }
+
+        .right{
+            h5{
+                font-size: 20px;
+            }
+            a{
+                color: #949494;
+                font-size: 14px;
+            }
+        }
+    }
+}
