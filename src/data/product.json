@@ -1,0 +1,120 @@
+[
+    {
+        "id": 1,
+        "title": "Galaxy A54 5G Case",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-18-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-18-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-17-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-18-300x225.png"
+        ],
+        "price": 78.90,
+        "description": "Access smart tv apps without your PC or laptop Unlock a full PC experience with Wireless DeX and see movies on the big screen with Tap view Work seamlessly with Microsoft 365 or use Remote PC to work on your school or office PC",
+        "bestseller": true,
+        "stock": 114,
+        "sku": "B1C3D5E7F9",
+        "tag": "Accessories",
+        "categories": [
+            "Accessories",
+            "Phone Cases"
+        ],
+        "brand": "Grundig",
+        "colors": [
+            "blue",
+            "green",
+            "yellow"
+        ],
+        "storages": [
+            128,
+            256
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Galaxy A54 5G Clear Case",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product1-8-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product2-5-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product3-6-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product4-5-300x225.png"
+        ],
+        "oldPrice": 101.86,
+        "price": 78.56,
+        "description": "Access smart tv apps without your PC or laptop Unlock a full PC experience with Wireless DeX and see movies on the big screen with Tap view Work seamlessley with Microsoft 365 or use Remote PC to work on your school or office PC",
+        "bestseller": true,
+        "stock": 150,
+        "sku": "D1C3B5A7Z7",
+        "tag": "Accessories",
+        "categories": [
+            "Accessories",
+            "Phone Cases"
+        ],
+        "brand": [
+            "Sony",
+            "Xiaomi"
+        ],
+        "colors": [
+            "blue",
+            "green",
+            "red"
+        ],
+        "storages": [
+            128,
+            1,
+            256
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Samsung USB-C Cable",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-19-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-18-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-19-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-19-300x225.png"
+        ],
+        "oldPrice": 22.89,
+        "price": 14.89,
+        "description": "Access smart tv apps without your PC or laptop Unlock a full PC experience with Wireless DeX and see movies on the big screen with Tap view Work seamlessley with Microsoft 365 or use Remote PC to work on your school or office PC",
+        "bestseller": true,
+        "stock": 47,
+        "sku": "J0H2G4F6E4",
+        "tag": "Accessories",
+        "categories": [
+            "Accessories",
+            "POWER & CHARGER"
+        ],
+        "brand": "Xiaomi"
+    },
+    {
+        "id": 4,
+        "title": "Wireless Charger Trio",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-20-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-20-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-19-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-20-300x225.png"
+        ],
+        "oldPrice": 829.19,
+        "price": 739.19,
+        "description": "Access smart tv apps without your PC or laptop Unlock a full PC experience with Wireless DeX and see movies on the big screen with Tap view Work seamlessley with Microsoft 365 or use Remote PC to work on your school or office PC",
+        "bestseller": true,
+        "stock": 31,
+        "sku": "Z0Y2X4W6U8",
+        "tag": "Accessories",
+        "categories": [
+            "Accessories",
+            "POWER & CHARGER"
+        ],
+        "brand": "Sony",
+        "colors": [
+            "black",
+            "red",
+            "yellow"
+        ],
+        "storages": [
+            128,
+            512
+        ]
+    }
+]
