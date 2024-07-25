@@ -8,8 +8,12 @@
             "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-17-300x225.png",
             "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-18-300x225.png"
         ],
-        "price": 78.90,
-        "description": "Access smart tv apps without your PC or laptop Unlock a full PC experience with Wireless DeX and see movies on the big screen with Tap view Work seamlessly with Microsoft 365 or use Remote PC to work on your school or office PC",
+        "newPrice": 78.90,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
         "bestseller": true,
         "stock": 114,
         "sku": "B1C3D5E7F9",
@@ -39,8 +43,12 @@
             "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product4-5-300x225.png"
         ],
         "oldPrice": 101.86,
-        "price": 78.56,
-        "description": "Access smart tv apps without your PC or laptop Unlock a full PC experience with Wireless DeX and see movies on the big screen with Tap view Work seamlessley with Microsoft 365 or use Remote PC to work on your school or office PC",
+        "newPrice": 78.56,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
         "bestseller": true,
         "stock": 150,
         "sku": "D1C3B5A7Z7",
@@ -74,8 +82,12 @@
             "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-19-300x225.png"
         ],
         "oldPrice": 22.89,
-        "price": 14.89,
-        "description": "Access smart tv apps without your PC or laptop Unlock a full PC experience with Wireless DeX and see movies on the big screen with Tap view Work seamlessley with Microsoft 365 or use Remote PC to work on your school or office PC",
+        "newPrice": 14.89,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
         "bestseller": true,
         "stock": 47,
         "sku": "J0H2G4F6E4",
@@ -96,8 +108,12 @@
             "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-20-300x225.png"
         ],
         "oldPrice": 829.19,
-        "price": 739.19,
-        "description": "Access smart tv apps without your PC or laptop Unlock a full PC experience with Wireless DeX and see movies on the big screen with Tap view Work seamlessley with Microsoft 365 or use Remote PC to work on your school or office PC",
+        "newPrice": 739.19,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
         "bestseller": true,
         "stock": 31,
         "sku": "Z0Y2X4W6U8",
@@ -116,5 +132,669 @@
             128,
             512
         ]
+    },
+    {
+        "id": 5,
+        "title": "Galaxy Tab A8 Book Cover",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-21-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-21-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-20-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-19-300x225.png"
+        ],
+        "oldPrice": 14.99,
+        "newPrice": 11.99,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 13,
+        "sku": "G1H3J5K7L9",
+        "tag": "Accessories",
+        "categories": [
+            "Accessories",
+            "Tablet Cases"
+        ],
+        "brand": "Philips"
+    },
+    {
+        "id": 6,
+        "title": "Galaxy Tab S8 Screen Film",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product1-9-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product1-9-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product13-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product12-300x225.png"
+        ],
+        "newPrice": 987.89,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 70,
+        "sku": "F0E2D4C6B8",
+        "tag": "Accessories",
+        "categories": [
+            "Accessories",
+            "Tablet Cases"
+        ],
+        "brand": "Lg",
+        "colors": [
+            "black",
+            "blue"
+        ],
+        "storages": [
+            128,
+            1,
+            256,
+            512
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Galaxy Tab S8+ Protector",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product1-10-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product2-6-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product3-7-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-21-300x225.png"
+        ],
+        "oldPrice": 105.88,
+        "newPrice": 95.39,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 149,
+        "sku": "M0L2K4J6H8",
+        "tag": "Accessories",
+        "categories": [
+            "Accessories",
+            "Tablet Cases"
+        ],
+        "brand": "Huawei"
+    },
+    {
+        "id": 8,
+        "title": "50\" Customisable Frame",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product1-13-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product2-9-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product3-10-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product4-8-300x225.png"
+        ],
+        "newPrice": 192.99,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 20,
+        "sku": "A0U2T4S6R5",
+        "tag": "Accessories",
+        "categories": [
+            "Accessories",
+            "Tv Accessories"
+        ],
+        "brand": "Samsung",
+        "colors": [
+            "black",
+            "green",
+            "yellow"
+        ],
+        "sizes": [
+            34,
+            50,
+            65,
+            85,
+            98
+        ]
+    },
+    {
+        "id": 9,
+        "title": "65\" Customisable Frame",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product1-11-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product2-7-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product3-8-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product4-6-300x225.png"
+        ],
+        "oldPrice": 102.09,
+        "newPrice": 72.67,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 43,
+        "sku": "C1B3A5Z7Y9",
+        "tag": "Accessories",
+        "categories": [
+            "Accessories",
+            "Tv Accessories"
+        ],
+        "brand": [
+            "Apple",
+            "Samsung"
+        ]
+    },
+    {
+        "id": 10,
+        "title": "85\" Customisable Frame",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product1-12-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product2-8-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product3-9-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product4-7-300x225.png"
+        ],
+        "newPrice": 780.99,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 26,
+        "sku": "W0X2Y4Z6A8",
+        "tag": "Accessories",
+        "categories": [
+            "Accessories",
+            "Tv Accessories"
+        ],
+        "brand": "Toshiba",
+        "colors": [
+            "blue",
+            "red",
+            "yellow"
+        ],
+        "sizes": [
+            65,
+            85,
+            98
+        ]
+    },
+    {
+        "id": 11,
+        "title": "Galaxy Watch4 Leather",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product1-14-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product2-10-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product3-11-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product4-9-300x225.png"
+        ],
+        "newPrice": 47.80,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 22,
+        "sku": "J0H2G4F6E8",
+        "tag": "Accessories",
+        "categories": [
+            "Accessories",
+            "Watch Band"
+        ],
+        "brand": [
+            "Huawei",
+            "Sony"
+        ],
+        "colors": [
+            "black",
+            "blue",
+            "green",
+            "red",
+            "yellow"
+        ],
+        "sizes": [
+            40,
+            43,
+            45,
+            47
+        ]
+    },
+    {
+        "id": 12,
+        "title": "Galaxy Watch5 Pro",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product1-15-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product2-11-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product3-12-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-22-300x225.png"
+        ],
+        "oldPrice": 75.97,
+        "newPrice": 65.97,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 55,
+        "sku": "C1D3E5F7G9",
+        "tag": "Accessories",
+        "categories": [
+            "Accessories",
+            "Watch Band"
+        ],
+        "brand": "Huawei",
+        "colors": [
+            "black",
+            "green"
+        ],
+        "sizes": [
+            40,
+            43,
+            45,
+            47
+        ]
+    },
+    {
+        "id": 13,
+        "title": "Galaxy Watch5 Pro (S-M)",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-21-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-22-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-21-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product1-15-300x225.png"
+        ],
+        "oldPrice": 113.97,
+        "newPrice": 96.37,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 40,
+        "sku": "N1M3L5K7J9",
+        "tag": "Accessories",
+        "categories": [
+            "Accessories",
+            "Watch Band"
+        ],
+        "brand": [
+            "Samsung",
+            "Sony"
+        ]
+    },
+    {
+        "id": 14,
+        "title": "Galaxy Buds2",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-23-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-4-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-4-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-20-300x225.png"
+        ],
+        "oldPrice": 695.89,
+        "newPrice": 563.89,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 149,
+        "sku": "V0U2T4S6R8",
+        "tag": "Buds",
+        "categories": [
+            "Buds",
+            "Galaxy Buds2"
+        ],
+        "brand": "Grundig",
+        "colors": [
+            "green",
+            "yellow"
+        ],
+        "connectivity": [
+            "Bt",
+            "Bt + 4G"
+        ]
+    },
+    {
+        "id": 15,
+        "title": "Galaxy Buds Live",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product1-16-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-5-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-5-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product1-16-300x225.png"
+        ],
+        "oldPrice": 715.89,
+        "newPrice": 538.30,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 148,
+        "sku": "Z0X2V4B6N8",
+        "tag": "Buds",
+        "categories": [
+            "Buds",
+            "Galaxy Buds2 Live"
+        ],
+        "brand": "Apple"
+    },
+    {
+        "id": 16,
+        "title": "Galaxy Buds2 Pro",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-24-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-3-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-3-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-21-300x225.png"
+        ],
+        "oldPrice": 340.00,
+        "newPrice": 290.00,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 150,
+        "sku": "E0F2G4H6J8",
+        "tag": "Buds",
+        "categories": [
+            "Buds",
+            "Galaxy Buds2 Pro"
+        ],
+        "brand": "Huawei"
+    },
+    {
+        "id": 17,
+        "title": "Apple Airpods Headphones",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-42-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-40-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-35-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-31-300x225.png"
+        ],
+        "oldPrice": 320.00,
+        "newPrice": 290.00,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 142,
+        "sku": "M0U2T4S6R1",
+        "tag": "Buds",
+        "categories": [
+            "Buds",
+            "Discounted"
+        ],
+        "brand": "Apple",
+        "colors": [
+            "black",
+            "blue",
+            "red"
+        ]
+    },
+    {
+        "id": 18,
+        "title": "Iphone 11 Compatible Case",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-45-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-44-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-39-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-34-300x225.png"
+        ],
+        "newPrice": 52.99,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "trending": true,
+        "stock": 138,
+        "sku": "X1C3B5A7Z8",
+        "tag": "Accessories",
+        "categories": [
+            "Accessories",
+            "Discounted"
+        ],
+        "brand": [
+            "Sony",
+            "Xiaomi"
+        ],
+        "colors": [
+            "blue",
+            "purple",
+            "yellow"
+        ]
+    },
+    {
+        "id": 19,
+        "title": "OPTOMA Projection",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-36-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-41-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-36-300x225.png"
+        ],
+        "oldPrice": 249.00,
+        "newPrice": 239.00,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 210,
+        "sku": "T1P3N5M7L1",
+        "tag": "Projectors",
+        "categories": [
+            "Discounted",
+            "Projectors"
+        ],
+        "brand": "Lg",
+        "colors": [
+            "black",
+            "red"
+        ],
+        "connectivity": [
+            "Bt",
+            "Bt + 4G"
+        ]
+    },
+    {
+        "id": 20,
+        "title": "Philips Soundbar",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-42-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-37-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-32-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/Urunler-750-%C3%97-599-piksel-300x225.png"
+        ],
+        "newPrice": 249.99,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 150,
+        "sku": "Q0J2H4G6F4",
+        "tag": "Sound Devices",
+        "categories": [
+            "Discounted",
+            "Sound Devices"
+        ],
+        "brand": "Philips"
+    },
+    {
+        "id": 21,
+        "title": "Samsung Powerbank",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-44-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-43-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-38-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-33-300x225.png"
+        ],
+        "oldPrice": 113.97,
+        "newPrice": 89.77,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "trending": true,
+        "stock": 23,
+        "sku": "Y0H2G4G6E7",
+        "tag": "Accessories",
+        "categories": [
+            "Accessories",
+            "Discounted"
+        ],
+        "brand": "Samsung"
+    },
+    {
+        "id": 22,
+        "title": "Xiaomi Redmi Pad 6GB",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-41-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-39-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-34-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-30-300x225.png"
+        ],
+        "oldPrice": 59.00,
+        "newPrice": 19.00,
+        "description": [
+            "5 years guarantee",
+            "Free shipping returns",
+            "Installment up to 9 months"
+        ],
+        "bestseller": true,
+        "stock": 43,
+        "sku": "K0M2L4K6J7",
+        "tag": "Tablets",
+        "categories": [
+            "Discounted",
+            "Tablets"
+        ],
+        "brand": "Xiaomi"
+    },
+    {
+        "id": 23,
+        "title": "24-inch iMac with Apple",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-28-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-26-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-25-300x225.png"
+        ],
+        "oldPrice": 1250.89,
+        "newPrice": 958.99,
+        "description": [
+            "5 years guarantee",
+            "Free returns",
+            "Installment Options"
+        ],
+        "new": true,
+        "stock": 19,
+        "sku": "A1Z3Y5A7C4",
+        "tag": "Laptop",
+        "categories": [
+            "IMac",
+            "Laptop"
+        ],
+        "brand": "Apple"
+    },
+    {
+        "id": 24,
+        "title": "13-inch MacBook Air",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product1-17-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product2-12-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product3-13-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product4-10-300x225.png"
+        ],
+        "newPrice": 1450.99,
+        "description": [
+            "5 years guarantee",
+            "Free returns",
+            "Installment Options"
+        ],
+        "new": true,
+        "stock": 46,
+        "sku": "S1Z3Y5X7R4",
+        "tag": "Laptop",
+        "categories": [
+            "Laptop",
+            "MacBook Air"
+        ],
+        "brand": "Apple"
+    },
+    {
+        "id": 24,
+        "title": "15-inch MacBook Air",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-26-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-25-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-24-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-23-300x225.png"
+        ],
+        "newPrice": 1250.00,
+        "description": [
+            "5 years guarantee",
+            "Free returns",
+            "Installment Options"
+        ],
+        "new": true,
+        "stock": 38,
+        "sku": "P1Z3Y5A7N4",
+        "tag": "Laptop",
+        "categories": [
+            "Laptop",
+            "MacBook Air"
+        ],
+        "brand": "Apple",
+        "colors": [
+            "blue",
+            "red",
+            "yellow"
+        ],
+        "storages": [
+            128,
+            256
+        ]
+    },
+    {
+        "id": 25,
+        "title": "14-inch MacBook Pro",
+        "mainImage": "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-26-300x225.png",
+        "subImages": [
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/2-24-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/3-23-300x225.png",
+            "https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/1-26-300x225.png"
+        ],
+        "oldPrice": 1250.99,
+        "newPrice": 1000.00,
+        "description": [
+            "5 years guarantee",
+            "Free returns",
+            "Installment Options"
+        ],
+        "new": true,
+        "stock": 30,
+        "sku": "Y1Z3Y5A7R5",
+        "tag": "Laptop",
+        "categories": [
+            "Laptop",
+            "MacBook Pro"
+        ],
+        "brand": "Apple"
     }
 ]
