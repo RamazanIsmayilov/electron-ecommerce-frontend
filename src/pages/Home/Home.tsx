@@ -7,7 +7,7 @@ const Home: React.FC = () => {
   return (
     <div className='home mt-4'>
       <div className="containers">
-        <div className="hero">
+        {/* <div className="hero">
           <div className="row g-3">
             <div className="col-12 col-sm-6 col-md-3 col-lg-3">
               <div className="left">
@@ -89,7 +89,7 @@ const Home: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

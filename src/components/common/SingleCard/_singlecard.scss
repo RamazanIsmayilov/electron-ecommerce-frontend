@@ -1,0 +1,21 @@
+@import '../../../assets/sass/_mixin.scss';
+@import '../../../assets/sass/_variable.scss';
+
+.single-card {
+    border: 1px solid $lightGray;
+    transition: .3s;
+
+    &:hover {
+        border: 1px solid $brightBlue;
+    }
+
+    .badge {
+        background-color: #1e96fc;
+        font-size: 11px;
+        padding: 5px 9px;
+    }
+
+    .title p {
+        font-size: 14px;
+    }
+}

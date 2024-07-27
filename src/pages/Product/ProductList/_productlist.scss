@@ -1,0 +1,76 @@
+@import '../../../assets/sass/_mixin.scss';
+@import '../../../assets/sass/_variable.scss';
+
+.product-list {
+
+    .head {
+        background-color: $softGray;
+        border-bottom: 1px solid $lightGray;
+
+        h2 {
+            font-size: 44px;
+        }
+
+        .container {
+            button {
+                background-color: $white;
+                border: 1px solid $white;
+                transition: .3s;
+
+                span {
+                    font-size: 13px;
+                }
+
+                &:hover {
+                    border: 1px solid $brightBlue;
+                    opacity: .8;
+                }
+            }
+        }
+    }
+
+    .products {
+        .containers {
+            @include container;
+
+            .left {
+                border: 1px solid $lightGray;
+
+                .price-filter {
+                    border-bottom: 1px solid $lightGray;
+
+                    h6 {
+                        font-size: 18px;
+                    }
+
+                    button {
+                        background-color: $brightBlue;
+                        font-size: 11px;
+                        padding: 8px 13px;
+                    }
+
+                    span {
+                        font-size: 13px;
+                        letter-spacing: .5px;
+                    }
+                }
+
+                .category-filter,
+                .brand-filter,
+                .color-filter,
+                .connectivity-filter,
+                .size-filter {
+                    border-bottom: 1px solid $lightGray;
+
+                    h6 {
+                        font-size: 18px;
+                    }
+
+                    span {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+}
