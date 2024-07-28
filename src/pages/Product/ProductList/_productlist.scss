@@ -71,6 +71,22 @@
                     }
                 }
             }
+
+            .right .filters {
+                button {
+                    background-color: $white;
+                    padding: 9px 17px;
+                    border: 1px solid $lightGray;
+                    font-size: 11px;
+                    font-weight: 600;
+                    letter-spacing: .4px;
+                    transition: .3s;
+
+                    &:hover {
+                        border: 1px solid $brightBlue;
+                    }
+                }
+            }
         }
     }
 }

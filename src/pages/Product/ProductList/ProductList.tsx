@@ -13,6 +13,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../../features/products/productsSlice';
 import { AppDispatch, RootState } from '../../../store/store';
 import Spinner from '../../../components/common/Spinner/Spinner';
+import BestsellerFilter from '../../../components/common/Filters/BestsellerFilter/BestsellerFilter';
+import TrendingFilter from '../../../components/common/Filters/TrendingFilter/TrendingFilter';
+import SaleFilter from '../../../components/common/Filters/SaleFilter/SaleFilter';
+import NewFilter from '../../../components/common/Filters/NewFilter/NewFilter';
+import Sorting from '../../../components/common/Filters/Sorting/Sorting';
 
 const ProductList: React.FC = () => {
 
@@ -97,7 +102,16 @@ const ProductList: React.FC = () => {
             </div>
             <div className="col-12 col-sm-12 col-md-8 col-lg-9">
               <div className="right">
-                <div className="row g-3">
+                <div className="filters d-flex align-items-center justify-content-between">
+                  <div className='d-flex align-items-center gap-3'>
+                      <BestsellerFilter />
+                      <TrendingFilter />
+                      <SaleFilter />
+                      <NewFilter />
+                  </div>
+                  <div><Sorting /></div>
+                </div>
+                <div className="row g-3 mt-2">
                   {loading && <Spinner />}
                   {error && <h2 className='text-center'>{error}</h2>}
                   {!loading && products.map(product => (
