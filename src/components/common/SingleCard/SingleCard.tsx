@@ -1,19 +1,26 @@
-    import React from 'react';
-    import { Swiper, SwiperSlide } from 'swiper/react';
-    import { Pagination } from 'swiper/modules';
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+import { MdOutlineShoppingBag } from "react-icons/md";
+import { Link } from 'react-router-dom';
+import { Product } from '../../../features/products/types';
 
-    const SingleCard: React.FC = () => {
-        const images = [
-            { src: 'https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product1-17-300x225.png', alt: 'First Slide' },
-            { src: 'https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product2-12-300x225.png', alt: 'Second Slide' },
-            { src: 'https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product3-13-300x225.png', alt: 'Third Slide' },
-            { src: 'https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/product4-10-300x225.png', alt: 'Fourth Slide' },
-        ];
+interface ProductProps {
+    product: Product
+}
 
-        return (
-            <div className='single-card p-3 rounded-2 w-25'>
+const SingleCard: React.FC<ProductProps> = ({ product }) => {
+
+    return (
+        <div className="col-12 col-sm-12 col-md-3 col-lg-3">
+            <div className='single-card p-3 rounded-2'>
                 <div className="badge">
-                    <span className='text-uppercase'>New</span>
+                    <span className='text-uppercase'>
+                        {product.bestseller && "bestseller"}
+                        {product.new && "new"}
+                        {product.trending && "trending"}
+                        {product.sale && "sale"}
+                    </span>
                 </div>
                 <div className="images">
                     <Swiper
@@ -23,18 +30,38 @@
                         pagination={{ clickable: true }}
                         className="swiper-container"
                     >
-                        {images.map((img, index) => (
+                        {product.images.map((item, index) => (
                             <SwiperSlide key={index} className="slide">
-                                <img width={220} src={img.src} alt={img.alt} />
+                                <Link to='/'>
+                                    <img width={220} src={item} alt={product.title} /></Link>
                             </SwiperSlide>
                         ))}
                     </Swiper>
                 </div>
                 <div className="title mt-2">
-                    <p className='fw-bold'>13-inch MacBook Air</p>
+                    <p className='fw-bold'>{product.title}</p>
+                </div>
+                <div className="price d-flex align-items-center gap-3 mt-2 fw-bold">
+                    <span className={`old-price text-decoration-line-through ${product.oldPrice ? 'd-block' : 'd-none'}`}>${product.oldPrice}</span>
+                    <span className='new-price'>${product.newPrice}</span>
+                </div>
+                <div className="stock mt-2">
+                    <span className='text-uppercase fw-semibold'>In stock: {product.stock}</span>
+                </div>
+                <div className="description mt-3">
+                    <p>✓ <span className='text-uppercase text-dark'>{product.description[0]}</span></p>
+                    <p>✓ <span className='text-uppercase text-dark'>{product.description[1]}</span></p>
+                    <p>✓ <span className='text-uppercase text-dark'>{product.description[2]}</span></p>
+                </div>
+                <div className="add-btn mt-3">
+                    <button className='text-light rounded-1 border-0'>
+                        <span>Add to cart</span>
+                        <MdOutlineShoppingBag className='icon text-center w-100' />
+                    </button>
                 </div>
             </div>
-        );
-    };
+        </div>
+    );
+};
 
-    export default SingleCard;
+export default SingleCard;

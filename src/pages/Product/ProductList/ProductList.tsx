@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { menuItem } from '../../../data/category-menu';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -9,8 +9,21 @@ import ColorFilter from '../../../components/common/Filters/ColorFilter/ColorFil
 import ConnectivityFilter from '../../../components/common/Filters/ConnectivityFilter/ConnectivityFilter';
 import SizeFilter from '../../../components/common/Filters/SizeFilter/SizeFilter';
 import SingleCard from '../../../components/common/SingleCard/SingleCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../../../features/products/productsSlice';
+import { AppDispatch, RootState } from '../../../store/store';
+import Spinner from '../../../components/common/Spinner/Spinner';
 
 const ProductList: React.FC = () => {
+
+  const dispatch = useDispatch<AppDispatch>();
+  const { products, loading, error } = useSelector((state: RootState) => state.products);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+
   return (
     <div className='product-list'>
       <div className="head text-center py-5">
@@ -84,7 +97,13 @@ const ProductList: React.FC = () => {
             </div>
             <div className="col-12 col-sm-12 col-md-8 col-lg-9">
               <div className="right">
-                <SingleCard />
+                <div className="row g-3">
+                  {loading && <Spinner />}
+                  {error && <h2 className='text-center'>{error}</h2>}
+                  {!loading && products.map(product => (
+                    <SingleCard key={product.id} product={product} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
