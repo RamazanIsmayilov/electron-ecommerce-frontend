@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import { menuItem } from '../../../data/category-menu';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -8,26 +8,17 @@ import BrandFilter from '../../../components/common/Filters/BrandFilter/BrandFil
 import ColorFilter from '../../../components/common/Filters/ColorFilter/ColorFilter';
 import ConnectivityFilter from '../../../components/common/Filters/ConnectivityFilter/ConnectivityFilter';
 import SizeFilter from '../../../components/common/Filters/SizeFilter/SizeFilter';
-import SingleCard from '../../../components/common/SingleCard/SingleCard';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../../../features/products/productsSlice';
-import { AppDispatch, RootState } from '../../../store/store';
-import Spinner from '../../../components/common/Spinner/Spinner';
 import BestsellerFilter from '../../../components/common/Filters/BestsellerFilter/BestsellerFilter';
 import TrendingFilter from '../../../components/common/Filters/TrendingFilter/TrendingFilter';
 import SaleFilter from '../../../components/common/Filters/SaleFilter/SaleFilter';
 import NewFilter from '../../../components/common/Filters/NewFilter/NewFilter';
 import Sorting from '../../../components/common/Filters/Sorting/Sorting';
+import { ProductContext } from '../../../context/ProductContext';
+import SingleCard from '../../../components/common/SingleCard/SingleCard';
+import Spinner from '../../../components/common/Spinner/Spinner';
 
 const ProductList: React.FC = () => {
-
-  const dispatch = useDispatch<AppDispatch>();
-  const { products, loading, error } = useSelector((state: RootState) => state.products);
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
-
+  const { products, loading } = useContext(ProductContext)
 
   return (
     <div className='product-list'>
@@ -104,18 +95,16 @@ const ProductList: React.FC = () => {
               <div className="right">
                 <div className="filters d-flex align-items-center justify-content-between">
                   <div className='d-flex align-items-center gap-3'>
-                      <BestsellerFilter />
-                      <TrendingFilter />
-                      <SaleFilter />
-                      <NewFilter />
+                    <BestsellerFilter />
+                    <TrendingFilter />
+                    <SaleFilter />
+                    <NewFilter />
                   </div>
                   <div><Sorting /></div>
                 </div>
                 <div className="row g-3 mt-2">
-                  {loading && <Spinner />}
-                  {error && <h2 className='text-center'>{error}</h2>}
-                  {!loading && products.map(product => (
-                    <SingleCard key={product.id} product={product} />
+                  {loading ? <Spinner /> : products.map(item => (
+                    <SingleCard key={item.id} product={item} />
                   ))}
                 </div>
               </div>
