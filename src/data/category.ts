@@ -37,14 +37,10 @@ export const category = [
     },
     {
         id: 10,
-        category: "Discunted",
-    },
-    {
-        id: 11,
         category: "LED Signage",
     },
     {
-        id: 12,
+        id: 11,
         category: "Sound Devices",
     }
 ]

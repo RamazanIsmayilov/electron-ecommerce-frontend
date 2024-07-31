@@ -2,20 +2,10 @@ import React, { useContext } from 'react';
 import { menuItem } from '../../../data/category-menu';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import PriceFilter from '../../../components/common/Filters/PriceFilter/PriceFilter';
-import CategoryFilter from '../../../components/common/Filters/CategoryFilter/CategoryFilter';
-import BrandFilter from '../../../components/common/Filters/BrandFilter/BrandFilter';
-import ColorFilter from '../../../components/common/Filters/ColorFilter/ColorFilter';
-import ConnectivityFilter from '../../../components/common/Filters/ConnectivityFilter/ConnectivityFilter';
-import SizeFilter from '../../../components/common/Filters/SizeFilter/SizeFilter';
-import BestsellerFilter from '../../../components/common/Filters/BestsellerFilter/BestsellerFilter';
-import TrendingFilter from '../../../components/common/Filters/TrendingFilter/TrendingFilter';
-import SaleFilter from '../../../components/common/Filters/SaleFilter/SaleFilter';
-import NewFilter from '../../../components/common/Filters/NewFilter/NewFilter';
-import Sorting from '../../../components/common/Filters/Sorting/Sorting';
 import { ProductContext } from '../../../context/ProductContext';
 import SingleCard from '../../../components/common/SingleCard/SingleCard';
 import Spinner from '../../../components/common/Spinner/Spinner';
+import { BestsellerFilter, BrandFilter, CategoryFilter, ColorFilter, ConnectivityFilter, NewFilter, PriceFilter, SaleFilter, SizeFilter, Sorting, TrendingFilter } from '../../../components/common/FilterComponent/FilterComponent';
 
 const ProductList: React.FC = () => {
   const { products, loading } = useContext(ProductContext)
@@ -71,24 +61,12 @@ const ProductList: React.FC = () => {
           <div className="row">
             <div className="col-12 col-sm-12 col-md-4 col-lg-3">
               <div className="left rounded-2">
-                <div className="price-filter p-4">
-                  <PriceFilter />
-                </div>
-                <div className="category-filter p-4">
-                  <CategoryFilter />
-                </div>
-                <div className="brand-filter p-4">
-                  <BrandFilter />
-                </div>
-                <div className="color-filter p-4">
-                  <ColorFilter />
-                </div>
-                <div className="connectivity-filter p-4">
-                  <ConnectivityFilter />
-                </div>,
-                <div className="size-filter p-4">
-                  <SizeFilter />
-                </div>
+                <PriceFilter />
+                <CategoryFilter />
+                <BrandFilter />
+                <ColorFilter />
+                <ConnectivityFilter />
+                <SizeFilter />
               </div>
             </div>
             <div className="col-12 col-sm-12 col-md-8 col-lg-9">

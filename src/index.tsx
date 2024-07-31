@@ -8,13 +8,16 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { ProductProvider } from './context/ProductContext';
+import { FilterProvider } from './context/FilterContext';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ProductProvider>
-      <App />
-    </ProductProvider>
+    <FilterProvider>
+      <ProductProvider>
+        <App />
+      </ProductProvider>
+    </FilterProvider>
   </React.StrictMode>
 );

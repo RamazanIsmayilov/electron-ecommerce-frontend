@@ -9,7 +9,7 @@
     &:hover {
         border: 1px solid $brightBlue;
 
-        .content{
+        .content {
             visibility: visible;
         }
     }
@@ -26,7 +26,8 @@
         padding: 9px;
         transition: .1s;
         width: 65%;
-        text-align: center !important;
+        margin: auto;
+        visibility: hidden;
     }
 
     .title p {
