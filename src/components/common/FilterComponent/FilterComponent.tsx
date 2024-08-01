@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { ReactComponent as BestsellerIcon } from "../../../assets/icons/bestseller.svg";
 import { ReactComponent as SaleIcon } from "../../../assets/icons/sale.svg";
 import { ReactComponent as TrendingIcon } from "../../../assets/icons/trending.svg";
@@ -9,8 +9,6 @@ import { color } from '../../../data/color';
 import { size } from '../../../data/size';
 import { connectivity } from '../../../data/connectivity';
 import { Option } from 'antd/es/mentions';
-import { FilterContext } from '../../../context/FilterContext';
-import { CheckboxChangeEvent } from 'antd/es/checkbox';
 
 export const PriceFilter: React.FC = () => {
   return (
@@ -28,16 +26,6 @@ export const PriceFilter: React.FC = () => {
 };
 
 export const CategoryFilter: React.FC = () => {
-  const { filter, setFilter } = useContext(FilterContext);
-
-  const handleChange = (e: CheckboxChangeEvent) => {
-    const value = e.target.value;
-    const updatedCategories = e.target.checked
-      ? [...filter.categories, value]
-      : filter.categories.filter((cat: string) => cat !== value);
-
-    setFilter({ ...filter, categories: updatedCategories });
-  };
   return (
     <>
       <div className="category-filter p-4">
@@ -45,10 +33,7 @@ export const CategoryFilter: React.FC = () => {
         <div className="filter mt-3">
           {category.map(item => (
             <div key={item.id} className='d-flex align-items-center gap-3 mt-2'>
-              <Checkbox
-                value={item.category}
-                onChange={handleChange}
-              />
+              <Checkbox />
               <span>{item.category}</span>
             </div>
           ))}
@@ -59,16 +44,6 @@ export const CategoryFilter: React.FC = () => {
 };
 
 export const BrandFilter: React.FC = () => {
-  const { filter, setFilter } = useContext(FilterContext);
-
-  const handleChange = (e: CheckboxChangeEvent) => {
-    const value = e.target.value;
-    const updatedCategories = e.target.checked
-      ? [...filter.brands, value]
-      : filter.brands.filter((cat: string) => cat !== value);
-
-    setFilter({ ...filter, brands: updatedCategories });
-  };
   return (
     <>
       <div className="brand-filter p-4">
@@ -76,10 +51,7 @@ export const BrandFilter: React.FC = () => {
         <div className="filter mt-3">
           {brand.map(item => (
             <div key={item.id} className='d-flex align-items-center gap-3 mt-2'>
-              <Checkbox
-                value={item.brand}
-                onChange={handleChange}
-              />
+              <Checkbox />
               <span>{item.brand}</span>
             </div>
           ))}
