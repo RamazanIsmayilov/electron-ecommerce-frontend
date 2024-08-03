@@ -8,6 +8,7 @@ import { Popover } from 'antd';
 import { FaRegHeart } from "react-icons/fa";
 import { HiOutlineRefresh } from "react-icons/hi";
 import { LuEye } from "react-icons/lu";
+import slugify from 'react-slugify';
 
 interface SingleCardProps {
     product: Product
@@ -36,7 +37,7 @@ const SingleCard: React.FC<SingleCardProps> = ({ product }) => {
                     >
                         {product.images.map((item, index) => (
                             <SwiperSlide key={index} className="slide">
-                                <Link to='/'>
+                                <Link to={`/shop/${slugify(product.title)}`}>
                                     <img width={220} src={item} alt={product.title} />
                                 </Link>
                             </SwiperSlide>
