@@ -1,5 +1,4 @@
 export interface Product {
-    category(category: any): void;
     id: number;
     title: string;
     images: string[];

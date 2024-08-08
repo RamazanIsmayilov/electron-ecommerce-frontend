@@ -1,7 +1,6 @@
-import React, { createContext, ReactNode, useEffect, useState, useContext } from 'react';
+import React, { createContext, ReactNode, useEffect, useState } from 'react';
 import { Product, ProductContextType } from '../types/productTypes';
 import { getProducts } from '../api/productApi';
-import { FilterContext } from './FilterContext'; // FilterContext'i içe aktarın
 
 export const ProductContext = createContext<ProductContextType>({
     products: [],
