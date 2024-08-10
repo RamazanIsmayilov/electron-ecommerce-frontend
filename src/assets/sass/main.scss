@@ -1,23 +1,24 @@
-@import url('./_global.scss');
-@import url('./_variable.scss');
-@import url('./_mixin.scss');
+@import url("./_global.scss");
+@import url("./_variable.scss");
+@import url("./_mixin.scss");
 
 // ---------------- components ----------------
-@import url('../../components/layout/Header/_header.scss');
-@import url('../../components/layout/Header/HeaderTop/_headertop.scss');
-@import url('../../components/layout/Header/HeaderBottom/_headerbottom.scss');
-@import url('../../components/layout/Footer/_footer.scss');
-@import url('../../components/layout/Footer/BottomFooter/_bottomfooter.scss');
-@import url('../../components/layout/Header/MobileNav/_mobilenav.scss');
-@import url('../../components/common/Search/_search.scss');
-@import url('../../components/common/Dropdown/_dropdown.scss');
-@import url('../../components/common/CategoryMenu/_categorymenu.scss');
-@import url('../../components/common/OffcanvasMenu/_offcanvasmenu.scss');
-@import url('../../components/common/Accardion/_accardion.scss');
-@import url('../../components/common/SingleCard/_singlecard.scss');
-@import url('../../components/common/Spinner/_spinner.scss');
+@import url("../../components/layout/Header/_header.scss");
+@import url("../../components/layout/Header/HeaderTop/_headertop.scss");
+@import url("../../components/layout/Header/HeaderBottom/_headerbottom.scss");
+@import url("../../components/layout/Footer/_footer.scss");
+@import url("../../components/layout/Footer/BottomFooter/_bottomfooter.scss");
+@import url("../../components/layout/Header/MobileNav/_mobilenav.scss");
+@import url("../../components/common/Search/_search.scss");
+@import url("../../components/common/Dropdown/_dropdown.scss");
+@import url("../../components/common/CategoryMenu/_categorymenu.scss");
+@import url("../../components/common/OffcanvasMenu/_offcanvasmenu.scss");
+@import url("../../components/common/Accardion/_accardion.scss");
+@import url("../../components/common/SingleCard/_singlecard.scss");
+@import url("../../components/common/Spinner/_spinner.scss");
 
 // ---------------- pages ----------------
-@import url('../../pages/Home/_home.scss');
-@import url('../../pages/Product/ProductList/_productlist.scss');
-@import url('../../pages/Product/ProductDetails/_productdetails.scss');
+@import url("../../pages/Home/_home.scss");
+@import url("../../pages/Product/ProductList/_productlist.scss");
+@import url("../../pages/Product/ProductDetails/_productdetails.scss");
+@import url("../../pages/Cart/_cart.scss");

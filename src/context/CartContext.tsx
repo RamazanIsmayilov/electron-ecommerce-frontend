@@ -1,34 +1,51 @@
 import React, { createContext, ReactNode, useState } from "react";
 import { Cart, CartContextType } from "../types/cartType";
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
+export const CartContext = createContext<CartContextType | undefined>(undefined);
 
-const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<Cart[]>([]);
 
   const addToCart = (item: Cart) => {
-    setCart((prevCart) => {
-      const itemIndex = prevCart.findIndex(
+    setCart((cart) => {
+      const itemIndex = cart.findIndex(
         (cartItem) => cartItem.id === item.id
       );
       if (itemIndex > -1) {
-        const updateCart = [...prevCart];
+        const updateCart = [...cart];
         updateCart[itemIndex].quantity += item.quantity;
         return updateCart;
       } else {
-        return [...prevCart, item];
+        return [...cart, item];
       }
     });
   };
 
   const increaseQuantity = (id: number) => {
-    setCart((prevCart) => {
-      const updateCart = prevCart.map((item) =>
+    setCart((cart) => {
+      const updateCart = cart.map((item) =>
         item.id === id ? { ...item, quantity: item.quantity + 1 } : item
       );
       return updateCart;
     });
   };
+
+  const decreaseQuantity = (id: number) => {
+    setCart((cart) => {
+      const updateCart = cart.map((item) =>
+        item.id === id ? { ...item, quantity: Math.max(item.quantity - 1, 1) } : item
+      );
+      return updateCart;
+    });
+  };
+
+  const removeFromCart = (id: number) => {
+    setCart(cart => cart.filter(item => item.id !==id))
+  }
+
+  const removeAllCart = () => {
+    setCart([]);
+  }
 
   return (
     <CartContext.Provider
@@ -36,6 +53,9 @@ const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         cart,
         addToCart,
         increaseQuantity,
+        decreaseQuantity,
+        removeFromCart,
+        removeAllCart
       }}
     >
       {children}
@@ -43,4 +63,3 @@ const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   );
 };
 
-export default CartProvider;

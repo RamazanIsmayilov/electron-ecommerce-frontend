@@ -11,11 +11,11 @@ import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword'
 import Wishlist from './pages/Wishlist/Wishlist'
-import AddToCart from './pages/AddToCart/AddToCart'
 import Faq from './pages/Faq/Faq'
 import NotFound from './pages/NotFound/NotFound'
 import Header from './components/layout/Header/Header'
 import Footer from './components/layout/Footer/Footer'
+import Cart from './pages/Cart/Cart'
 
 
 const App: React.FC = () => {
@@ -34,7 +34,7 @@ const App: React.FC = () => {
           <Route path='/shop' element={<ProductList />}></Route>
           <Route path='/shop/:productId' element={<ProductDetails />}></Route>
           <Route path='/wishlist' element={<Wishlist />}></Route>
-          <Route path='/addtocart' element={<AddToCart />}></Route>
+          <Route path='/cart' element={<Cart />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/register' element={<Register />}></Route>
           <Route path='/forgotpassword' element={<ForgotPassword />}></Route>
