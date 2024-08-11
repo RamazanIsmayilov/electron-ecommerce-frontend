@@ -1,0 +1,48 @@
+.cart-page {
+  .left {
+    table tr {
+      .title {
+        font-size: 14px;
+      }
+
+      .price {
+        color: #b20808;
+        font-size: 14px;
+      }
+
+      .counter {
+        border: 1px solid #eaebed;
+        color: #595959;
+        font-size: 13px;
+        border-radius: 4px;
+        padding: 0;
+
+        button {
+          color: #e1e2e3;
+          background: transparent;
+          border: none;
+          padding: 12px;
+
+          &:hover {
+            background-color: #000;
+            color: #fff;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+
+    .remove-all{
+        background-color: #2252d1;
+        color: #fff;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+
+        &:hover{
+            background-color: navy;
+        }
+    }
+  }
+}

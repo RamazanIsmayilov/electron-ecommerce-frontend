@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Logo from "../../../assets/images/Header/logo.png";
 import { Link } from "react-router-dom";
 import { ImWhatsapp } from "react-icons/im";
@@ -13,6 +13,7 @@ import HeaderBottom from "./HeaderBottom/HeaderBottom";
 import MobileNav from "./MobileNav/MobileNav";
 import Badge from "../../common/Badge/Badge";
 import Search from "../../common/Search/Search";
+import { CartContext } from "../../../context/CartContext";
 
 const content = (
   <div>
@@ -26,6 +27,15 @@ const content = (
 );
 
 const Header: React.FC = () => {
+  const cartContext = useContext(CartContext);
+
+  if (!cartContext) {
+    return null;
+  }
+
+  const { totalQuantity } = cartContext;
+
+
   return (
     <>
       <HeaderTop />
@@ -58,7 +68,7 @@ const Header: React.FC = () => {
               <Link to="/cart">
                 <Badge
                   icon={<HiOutlineShoppingBag className="fs-4" />}
-                  count={0}
+                  count={totalQuantity()}
                 />
               </Link>
             </div>

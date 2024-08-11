@@ -5,7 +5,7 @@ import { CartContext } from "../../context/CartContext";
 import { SlRefresh } from "react-icons/sl";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { FaMinus, FaPlus } from "react-icons/fa";
-
+import { BsTrash3 } from "react-icons/bs";
 const Cart: React.FC = () => {
   const cartContext = useContext(CartContext);
 
@@ -37,30 +37,45 @@ const Cart: React.FC = () => {
               ) : (
                 <table className="table">
                   {cart.map((item) => (
-                    <tr key={item.id} className="border">
+                    <tr
+                      key={item.id}
+                      className="border-bottom border-top d-flex align-items-center justify-content-between px-3"
+                    >
                       <td className="text-center">
                         <img width={80} src={item.image} alt={item.title} />
                       </td>
-                      <td className="d-flex flex-column text-center">
-                        <span className="title">{item.title}</span>
-                        <span>${item.price}</span>
+                      <td className="d-flex flex-column">
+                        <span className="title fw-bold">{item.title}</span>
+                        <span className="price fw-bold">
+                          ${item.price} x {item.quantity}
+                        </span>
                       </td>
                       <td>
-                        <div className="counter d-flex align-items-center gap-2 rounded">
-                          <button>
+                        <div className="counter d-flex align-items-center gap-2">
+                          <button onClick={() => decreaseQuantity(item.id)}>
                             <FaMinus />
                           </button>
-                          <span>1</span>
-                          <button>
+                          <span>{item.quantity}</span>
+                          <button onClick={() => increaseQuantity(item.id)}>
                             <FaPlus />
                           </button>
                         </div>
                       </td>
-                      <td>{item.quantity}</td>
-                      <td>{item.price}</td>
+                      <td className="price fw-bold">${`${item.price * item.quantity}`}</td>
+                      <td>
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          className="bg-transparent border-0"
+                        >
+                          <BsTrash3 />
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </table>
+              )}
+              {cart.length > 0 && (
+                <button className="remove-all" onClick={removeAllCart}>Remove All Items</button>
               )}
             </div>
           </div>

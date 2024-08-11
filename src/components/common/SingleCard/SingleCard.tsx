@@ -29,7 +29,6 @@ const SingleCard: React.FC<SingleCardProps> = ({ product }) => {
       quantity: 1,
     };
     addToCart(cartItem);
-    console.log(`Added to cart: ${product.title}`);
   };
 
   return (
