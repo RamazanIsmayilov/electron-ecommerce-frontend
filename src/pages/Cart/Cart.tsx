@@ -1,11 +1,8 @@
 import React, { useContext } from "react";
-import { Table } from "antd";
-
 import { CartContext } from "../../context/CartContext";
-import { SlRefresh } from "react-icons/sl";
-import { IoMdHeartEmpty } from "react-icons/io";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { BsTrash3 } from "react-icons/bs";
+import { Link } from "react-router-dom";
 const Cart: React.FC = () => {
   const cartContext = useContext(CartContext);
 
@@ -17,13 +14,14 @@ const Cart: React.FC = () => {
     cart,
     increaseQuantity,
     decreaseQuantity,
+    totalPrice,
     removeFromCart,
     removeAllCart,
   } = cartContext;
   return (
     <div className="cart-page mt-5">
-      <div className="container">
-        <div className="row">
+      <div className="containers">
+        <div className="row g-4">
           <div className="col-12 col-sm-12 col-md-8 col-lg-8">
             <div className="left">
               {cart.length === 0 ? (
@@ -61,7 +59,9 @@ const Cart: React.FC = () => {
                           </button>
                         </div>
                       </td>
-                      <td className="price fw-bold">${`${item.price * item.quantity}`}</td>
+                      <td className="price fw-bold">
+                        ${`${(item.price * item.quantity).toFixed(2)}`}
+                      </td>
                       <td>
                         <button
                           onClick={() => removeFromCart(item.id)}
@@ -75,12 +75,27 @@ const Cart: React.FC = () => {
                 </table>
               )}
               {cart.length > 0 && (
-                <button className="remove-all" onClick={removeAllCart}>Remove All Items</button>
+                <button className="remove-all" onClick={removeAllCart}>
+                  Remove All Items
+                </button>
               )}
             </div>
           </div>
           <div className="col-12 col-sm-12 col-md-4 col-lg-4">
-            <div className="right"></div>
+            <div className="right">
+              <div className="cart-total p-4 rounded">
+                <h5 className="fw-bold fs-4">Cart totals</h5>
+                <div className="totals d-flex align-items-center justify-content-between mt-4">
+                  <p>Total</p>
+                  <span>${totalPrice().toFixed(2)}</span>
+                </div>
+                <div className="checkout  d-flex align-items-center justify-content-center mt-4">
+                  <Link className="text-light w-100 text-center rounded" to="/">
+                    Procced to checkout
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

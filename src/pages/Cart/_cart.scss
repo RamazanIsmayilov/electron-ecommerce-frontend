@@ -1,38 +1,42 @@
+@import "../../assets/sass/_mixin.scss";
 .cart-page {
-  .left {
-    table tr {
-      .title {
-        font-size: 14px;
-      }
+  .containers {
+    @include container;
 
-      .price {
-        color: #b20808;
-        font-size: 14px;
-      }
+    .left {
+      table tr {
+        .title {
+          font-size: 14px;
+        }
 
-      .counter {
-        border: 1px solid #eaebed;
-        color: #595959;
-        font-size: 13px;
-        border-radius: 4px;
-        padding: 0;
+        .price {
+          color: #b20808;
+          font-size: 14px;
+        }
 
-        button {
-          color: #e1e2e3;
-          background: transparent;
-          border: none;
-          padding: 12px;
+        .counter {
+          border: 1px solid #eaebed;
+          color: #595959;
+          font-size: 13px;
+          border-radius: 4px;
+          padding: 0;
 
-          &:hover {
-            background-color: #000;
-            color: #fff;
-            border-radius: 4px;
+          button {
+            color: #e1e2e3;
+            background: transparent;
+            border: none;
+            padding: 12px;
+
+            &:hover {
+              background-color: #000;
+              color: #fff;
+              border-radius: 4px;
+            }
           }
         }
       }
-    }
 
-    .remove-all{
+      .remove-all {
         background-color: #2252d1;
         color: #fff;
         padding: 12px;
@@ -40,9 +44,31 @@
         border-radius: 5px;
         font-size: 14px;
 
-        &:hover{
-            background-color: navy;
+        &:hover {
+          background-color: navy;
         }
+      }
+    }
+
+    .right .cart-total {
+      border: 2px solid #eaebed;
+
+      .totals span {
+        color: #b20808;
+        font-weight: 600;
+      }
+
+      .checkout a {
+        background-color: #2252d1;
+        padding: 20px 15px;
+        transition: 0.3s;
+        font-size: 14px;
+        letter-spacing: 0.6px;
+
+        &:hover {
+          background-color: navy;
+        }
+      }
     }
   }
 }

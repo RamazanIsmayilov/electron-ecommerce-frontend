@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useState } from "react";
+import React, { createContext, ReactNode, useEffect, useState } from "react";
 import { Cart, CartContextType } from "../types/cartType";
 
 export const CartContext = createContext<CartContextType | undefined>(
@@ -6,7 +6,11 @@ export const CartContext = createContext<CartContextType | undefined>(
 );
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children}) => {
-  const [cart, setCart] = useState<Cart[]>([]);
+const [cart, setCart] = useState<Cart[]>(() => JSON.parse(localStorage.getItem("cart") || '[]'));
+
+    useEffect(() => {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
 
   const addToCart = (item: Cart) => {
     setCart((cart) => {
@@ -53,6 +57,10 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children}) => 
     return cart.reduce((total, item) => total + item.quantity, 0);
   };
 
+  const totalPrice = (): number => {
+    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -61,6 +69,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children}) => 
         increaseQuantity,
         decreaseQuantity,
         totalQuantity,
+        totalPrice,
         removeFromCart,
         removeAllCart,
       }}
