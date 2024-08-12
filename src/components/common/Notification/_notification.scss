@@ -1,0 +1,29 @@
+/* components/Notification.scss */
+.notification-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 1rem;
+    z-index: 9999;
+}
+
+.notification {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 4px;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.notification.success {
+    background-color: green;
+}
+
+.notification.warning {
+    background-color: orange;
+}
+
+.notification.error {
+    background-color: red;
+}

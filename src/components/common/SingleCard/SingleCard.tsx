@@ -11,14 +11,22 @@ import { LuEye } from "react-icons/lu";
 import slugify from "react-slugify";
 import { CartContext } from "../../../context/CartContext";
 import { Cart } from "../../../types/cartType";
+import { NotificationContext } from "../../../context/NotificationContext";
+import Notification from "../Notification/Notification";
 
 interface SingleCardProps {
   product: Product;
 }
 
 const SingleCard: React.FC<SingleCardProps> = ({ product }) => {
-  const cartContext = useContext(CartContext);
-  const addToCart = cartContext!.addToCart;
+  const { addToCart } = useContext(CartContext);
+
+
+  const { successNotification } = useContext(NotificationContext);
+
+  const handleClick = () => {
+    successNotification('This is a success message!');
+};
 
   const handleAddToCart = () => {
     const cartItem: Cart = {
@@ -29,6 +37,7 @@ const SingleCard: React.FC<SingleCardProps> = ({ product }) => {
       quantity: 1,
     };
     addToCart(cartItem);
+    handleClick()
   };
 
   return (
@@ -122,6 +131,7 @@ const SingleCard: React.FC<SingleCardProps> = ({ product }) => {
             <span>Add to cart</span>
             <MdOutlineShoppingBag className="icon text-center w-100" />
           </button>
+          <Notification />
         </div>
       </div>
     </div>

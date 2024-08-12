@@ -10,6 +10,7 @@ import "swiper/css/navigation";
 import { ProductProvider } from "./context/ProductContext";
 import { FilterProvider } from "./context/FilterContext";
 import { CartProvider } from "./context/CartContext";
+import { NotificationProvider } from "./context/NotificationContext";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -18,7 +19,9 @@ root.render(
     <FilterProvider>
       <ProductProvider>
         <CartProvider>
-          <App />
+          <NotificationProvider>
+            <App />
+          </NotificationProvider>
         </CartProvider>
       </ProductProvider>
     </FilterProvider>

@@ -16,3 +16,14 @@ export interface CartContextType {
   removeFromCart: (id: number) => void;
   removeAllCart: () => void;
 }
+
+export const defaultCartValue: CartContextType = {
+  cart: [],
+  addToCart: () => {},
+  increaseQuantity: () => {},
+  decreaseQuantity: () => {},
+  totalQuantity: () => 0,
+  totalPrice:() => 0,
+  removeFromCart: () => {},
+  removeAllCart: () => {},
+}
