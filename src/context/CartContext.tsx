@@ -3,20 +3,26 @@ import { Cart, CartContextType, defaultCartValue } from "../types/cartType";
 
 export const CartContext = createContext<CartContextType>(defaultCartValue);
 
-export const CartProvider: React.FC<{ children: ReactNode }> = ({ children}) => {
-const [cart, setCart] = useState<Cart[]>(() => JSON.parse(localStorage.getItem("cart") || '[]'));
+export const CartProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const [cart, setCart] = useState<Cart[]>(() =>
+    JSON.parse(localStorage.getItem("cart") || "[]")
+  );
 
-    useEffect(() => {
-      localStorage.setItem("cart", JSON.stringify(cart));
-    }, [cart]);
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (item: Cart) => {
     setCart((cart) => {
-      const itemIndex = cart.findIndex((cartItem) => cartItem.id === item.id);
-      if (itemIndex > -1) {
-        const updateCart = [...cart];
-        updateCart[itemIndex].quantity += item.quantity;
-        return updateCart;
+      const addedItem = cart.find((cartItem) => cartItem.id === item.id);
+      if (addedItem) {
+        return cart.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + item.quantity }
+            : cartItem
+        );
       } else {
         return [...cart, item];
       }
@@ -56,7 +62,7 @@ const [cart, setCart] = useState<Cart[]>(() => JSON.parse(localStorage.getItem("
   };
 
   const totalPrice = (): number => {
-    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
   return (

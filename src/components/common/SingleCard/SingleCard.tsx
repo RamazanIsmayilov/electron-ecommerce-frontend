@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { MdOutlineShoppingBag } from "react-icons/md";
@@ -21,12 +21,18 @@ interface SingleCardProps {
 const SingleCard: React.FC<SingleCardProps> = ({ product }) => {
   const { addToCart } = useContext(CartContext);
 
+  const [isInCart, setIsInCart] = useState(false);
+
+  const addToCartHandler = () => {
+    handleAddToCart();
+    setIsInCart(true);
+  };
 
   const { successNotification } = useContext(NotificationContext);
 
   const handleClick = () => {
-    successNotification('This is a success message!');
-};
+    successNotification(`"${product.title}" added to your cart.`);
+  };
 
   const handleAddToCart = () => {
     const cartItem: Cart = {
@@ -37,7 +43,7 @@ const SingleCard: React.FC<SingleCardProps> = ({ product }) => {
       quantity: 1,
     };
     addToCart(cartItem);
-    handleClick()
+    handleClick();
   };
 
   return (
@@ -126,7 +132,8 @@ const SingleCard: React.FC<SingleCardProps> = ({ product }) => {
         <div className="add-btn mt-3">
           <button
             className="text-light rounded-1 border-0"
-            onClick={handleAddToCart}
+            style={{ backgroundColor: isInCart ? "#019267" : "#2252d1" }}
+            onClick={addToCartHandler}
           >
             <span>Add to cart</span>
             <MdOutlineShoppingBag className="icon text-center w-100" />

@@ -1,4 +1,3 @@
-/* components/Notification.scss */
 .notification-container {
     position: fixed;
     bottom: 0;
@@ -8,16 +7,17 @@
 }
 
 .notification {
+    font-size: 13px;
     margin-bottom: 1rem;
     padding: 1rem;
     border-radius: 4px;
-    color: white;
+    color: #fff;
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
 }
 
 .notification.success {
-    background-color: green;
+    background-color: #019267;
 }
 
 .notification.warning {
