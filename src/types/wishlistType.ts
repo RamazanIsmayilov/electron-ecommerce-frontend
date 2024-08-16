@@ -4,18 +4,18 @@ export interface Wishlist {
   title: string;
   price: number;
 }
-
 export interface WishlistContextType {
   wishlist: Wishlist[];
   addToWishlist: (item: Wishlist) => void;
   removeFromWishlist: (id: number) => void;
-  removeAllWishlist: () => void
+  removeAllWishlist: () => void;
+  isInWishlist: (id: number) => boolean;
 }
-
 
 export const defaultWishlistValue: WishlistContextType = {
-    wishlist: [],
-    addToWishlist: () => {},
-    removeFromWishlist: () => {},
-    removeAllWishlist: () => {}
-}
+  wishlist: [],
+  addToWishlist: () => {},
+  removeFromWishlist: () => {},
+  removeAllWishlist: () => {},
+  isInWishlist: () => false,
+};

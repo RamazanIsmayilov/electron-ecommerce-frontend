@@ -1,20 +1,17 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { Product } from "../../../types/productTypes";
 import { Popover } from "antd";
-import { FaRegHeart } from "react-icons/fa";
 import { HiOutlineRefresh } from "react-icons/hi";
 import { LuEye } from "react-icons/lu";
 import slugify from "react-slugify";
 import { CartContext } from "../../../context/CartContext";
-import { Cart } from "../../../types/cartType";
 import { NotificationContext } from "../../../context/NotificationContext";
 import Notification from "../Notification/Notification";
 import { WishlistContext } from "../../../context/WishlistContext";
-import { Wishlist } from "../../../types/wishlistType";
 import { FaHeart } from "react-icons/fa";
 
 interface SingleCardProps {
@@ -22,57 +19,39 @@ interface SingleCardProps {
 }
 
 const SingleCard: React.FC<SingleCardProps> = ({ product }) => {
-  const { addToCart } = useContext(CartContext);
-  const { addToWishlist } = useContext(WishlistContext);
   const { successNotification } = useContext(NotificationContext);
+  const { addToWishlist, isInWishlist } = useContext(WishlistContext);
+  const { addToCart, isInCart } = useContext(CartContext);
+  const [isItemInWishlist, setIsItemInWishlist] = useState<boolean>(false);
+  const [isItemInCart, setIsItemInCart] = useState<boolean>(false);
 
-  const [isInCart, setIsInCart] = useState<boolean>(false);
-  const [isInWishlist, setIsInWishlist] = useState<boolean>(false);
-  
-  const addedCartNotificationFunc = () => {
-    successNotification(`"${product.title}" added to your cart.`);
-  };
+  useEffect(() => {
+    setIsItemInWishlist(isInWishlist(product.id));
+  }, [product.id, isInWishlist]);
 
-  const addedWishlistNotificationFunc = () => {
-    successNotification(`"${product.title}" added to your wishlist.`);
-  };
-
-  const removedNotificationFunc = () => {
-    successNotification(`"${product.title}" removed to your wishlist.`);
-  };
-
-  const addToCartHandler = () => {
-    handleAddToCart();
-    setIsInCart(true);
-  };
-
-  const addToWishlistHandler = () => {
-    handleAddToWishlist();
-    setIsInWishlist(!isInWishlist);
-  };
+  useEffect(() => {
+    setIsItemInCart(isInCart(product.id));
+  }, [product.id, isInCart]);
 
   const handleAddToCart = () => {
-    const cartItem: Cart = {
+    addToCart({
       id: product.id,
       image: product.images[0],
       title: product.title,
       price: product.newPrice,
       quantity: 1,
-    };
-    addToCart(cartItem);
-    addedCartNotificationFunc();
+    })
+    successNotification(`"${product.title}" added to your cart.`);
   };
 
   const handleAddToWishlist = () => {
-    const wishlistItem: Wishlist = {
+    addToWishlist({
       id: product.id,
       image: product.images[0],
       title: product.title,
       price: product.newPrice,
-    };
-    addToWishlist(wishlistItem);
-   isInWishlist ?  removedNotificationFunc() : addedWishlistNotificationFunc()
-    console.log(`${product.title} added to wishlist`);
+    });
+    isItemInWishlist ? successNotification(`"${product.title}" removed to your wishlist.`) : successNotification(`"${product.title}" added to your wishlist.`);
   };
 
   return (
@@ -106,10 +85,10 @@ const SingleCard: React.FC<SingleCardProps> = ({ product }) => {
         <div className="content d-flex align-items-center justify-content-center rounded-2 gap-3">
           <Popover content="Add to Wishlist">
             <button
-              onClick={addToWishlistHandler}
+              onClick={handleAddToWishlist}
               className="bg-transparent border-0"
             >
-              <FaHeart style={{fill: isInWishlist ? 'red' : 'black' }} />
+              <FaHeart style={{ fill: isItemInWishlist ? "red" : "black" }} />
             </button>
           </Popover>
           <Popover content="Compare">
@@ -128,9 +107,8 @@ const SingleCard: React.FC<SingleCardProps> = ({ product }) => {
         </div>
         <div className="price d-flex align-items-center gap-3 mt-2 fw-bold">
           <span
-            className={`old-price text-decoration-line-through ${
-              product.oldPrice ? "d-block" : "d-none"
-            }`}
+            className={`old-price text-decoration-line-through ${product.oldPrice ? "d-block" : "d-none"
+              }`}
           >
             ${product.oldPrice}
           </span>
@@ -164,8 +142,8 @@ const SingleCard: React.FC<SingleCardProps> = ({ product }) => {
         <div className="add-btn mt-3">
           <button
             className="text-light rounded-1 border-0"
-            style={{ backgroundColor: isInCart ? "#019267" : "#2252d1" }}
-            onClick={addToCartHandler}
+            style={{ backgroundColor: isItemInCart ? "#019267" : "#2252d1" }}
+            onClick={handleAddToCart}
           >
             <span>Add to cart</span>
             <MdOutlineShoppingBag className="icon text-center w-100" />

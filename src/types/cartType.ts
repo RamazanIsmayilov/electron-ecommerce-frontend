@@ -15,6 +15,7 @@ export interface CartContextType {
   totalPrice: () => number;
   removeFromCart: (id: number) => void;
   removeAllCart: () => void;
+  isInCart: (id: number) => boolean;
 }
 
 export const defaultCartValue: CartContextType = {
@@ -26,4 +27,5 @@ export const defaultCartValue: CartContextType = {
   totalPrice:() => 0,
   removeFromCart: () => {},
   removeAllCart: () => {},
+  isInCart: () => false
 }

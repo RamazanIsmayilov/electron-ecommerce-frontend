@@ -4,20 +4,8 @@ import { FaMinus, FaPlus } from "react-icons/fa";
 import { BsTrash3 } from "react-icons/bs";
 import { Link } from "react-router-dom";
 const Cart: React.FC = () => {
-  const cartContext = useContext(CartContext);
+  const {cart, increaseQuantity, decreaseQuantity, totalPrice, removeFromCart, removeAllCart} = useContext(CartContext);
 
-  if (!cartContext) {
-    return <div>Cart context is not available.</div>;
-  }
-
-  const {
-    cart,
-    increaseQuantity,
-    decreaseQuantity,
-    totalPrice,
-    removeFromCart,
-    removeAllCart,
-  } = cartContext;
   return (
     <div className="cart-page mt-5">
       <div className="containers">

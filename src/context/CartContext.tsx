@@ -63,6 +63,10 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
+  const isInCart = (id: number) => {
+    return cart.some(item => item.id === id);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -74,6 +78,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         totalPrice,
         removeFromCart,
         removeAllCart,
+        isInCart
       }}
     >
       {children}

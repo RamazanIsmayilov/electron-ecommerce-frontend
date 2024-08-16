@@ -28,8 +28,8 @@ const content = (
 );
 
 const Header: React.FC = () => {
-  const {totalQuantity} = useContext(CartContext);
-  const {wishlist} = useContext(WishlistContext);
+  const { totalQuantity } = useContext(CartContext);
+  const { wishlist } = useContext(WishlistContext);
 
   return (
     <>
@@ -71,7 +71,12 @@ const Header: React.FC = () => {
               <Badge icon={<SlRefresh className="fs-4" />} count={0} />
             </div>
             <div className="wishlist">
-              <Badge icon={<SlHeart className="fs-4" />} count={wishlist.length} />
+              <Link to='/wishlist'>
+                <Badge
+                  icon={<SlHeart className="fs-4" />}
+                  count={wishlist.length}
+                />
+              </Link>
             </div>
             <div className="account">
               <button className="bg-transparent border-0 pe-0">
