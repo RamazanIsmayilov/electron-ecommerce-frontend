@@ -5,7 +5,7 @@ export interface Product {
     newPrice: number;
     oldPrice?: number;
     description: string[];
-    bestseller?: boolean;
+    bestseller?: boolean;   
     trending?: boolean;
     new?: boolean;
     sale?: boolean;

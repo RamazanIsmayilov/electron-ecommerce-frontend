@@ -3,9 +3,7 @@ import { Cart, CartContextType, defaultCartValue } from "../types/cartType";
 
 export const CartContext = createContext<CartContextType>(defaultCartValue);
 
-export const CartProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<Cart[]>(() =>
     JSON.parse(localStorage.getItem("cart") || "[]")
   );

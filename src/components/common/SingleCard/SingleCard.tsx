@@ -13,6 +13,9 @@ import { CartContext } from "../../../context/CartContext";
 import { Cart } from "../../../types/cartType";
 import { NotificationContext } from "../../../context/NotificationContext";
 import Notification from "../Notification/Notification";
+import { WishlistContext } from "../../../context/WishlistContext";
+import { Wishlist } from "../../../types/wishlistType";
+import { FaHeart } from "react-icons/fa";
 
 interface SingleCardProps {
   product: Product;
@@ -20,18 +23,32 @@ interface SingleCardProps {
 
 const SingleCard: React.FC<SingleCardProps> = ({ product }) => {
   const { addToCart } = useContext(CartContext);
+  const { addToWishlist } = useContext(WishlistContext);
+  const { successNotification } = useContext(NotificationContext);
 
-  const [isInCart, setIsInCart] = useState(false);
+  const [isInCart, setIsInCart] = useState<boolean>(false);
+  const [isInWishlist, setIsInWishlist] = useState<boolean>(false);
+  
+  const addedCartNotificationFunc = () => {
+    successNotification(`"${product.title}" added to your cart.`);
+  };
+
+  const addedWishlistNotificationFunc = () => {
+    successNotification(`"${product.title}" added to your wishlist.`);
+  };
+
+  const removedNotificationFunc = () => {
+    successNotification(`"${product.title}" removed to your wishlist.`);
+  };
 
   const addToCartHandler = () => {
     handleAddToCart();
     setIsInCart(true);
   };
 
-  const { successNotification } = useContext(NotificationContext);
-
-  const handleClick = () => {
-    successNotification(`"${product.title}" added to your cart.`);
+  const addToWishlistHandler = () => {
+    handleAddToWishlist();
+    setIsInWishlist(!isInWishlist);
   };
 
   const handleAddToCart = () => {
@@ -43,7 +60,19 @@ const SingleCard: React.FC<SingleCardProps> = ({ product }) => {
       quantity: 1,
     };
     addToCart(cartItem);
-    handleClick();
+    addedCartNotificationFunc();
+  };
+
+  const handleAddToWishlist = () => {
+    const wishlistItem: Wishlist = {
+      id: product.id,
+      image: product.images[0],
+      title: product.title,
+      price: product.newPrice,
+    };
+    addToWishlist(wishlistItem);
+   isInWishlist ?  removedNotificationFunc() : addedWishlistNotificationFunc()
+    console.log(`${product.title} added to wishlist`);
   };
 
   return (
@@ -76,8 +105,11 @@ const SingleCard: React.FC<SingleCardProps> = ({ product }) => {
         </div>
         <div className="content d-flex align-items-center justify-content-center rounded-2 gap-3">
           <Popover content="Add to Wishlist">
-            <button className="bg-transparent border-0">
-              <FaRegHeart />
+            <button
+              onClick={addToWishlistHandler}
+              className="bg-transparent border-0"
+            >
+              <FaHeart style={{fill: isInWishlist ? 'red' : 'black' }} />
             </button>
           </Popover>
           <Popover content="Compare">

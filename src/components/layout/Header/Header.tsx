@@ -14,6 +14,7 @@ import MobileNav from "./MobileNav/MobileNav";
 import Badge from "../../common/Badge/Badge";
 import Search from "../../common/Search/Search";
 import { CartContext } from "../../../context/CartContext";
+import { WishlistContext } from "../../../context/WishlistContext";
 
 const content = (
   <div>
@@ -27,14 +28,8 @@ const content = (
 );
 
 const Header: React.FC = () => {
-  const cartContext = useContext(CartContext);
-
-  if (!cartContext) {
-    return null;
-  }
-
-  const { totalQuantity } = cartContext;
-
+  const {totalQuantity} = useContext(CartContext);
+  const {wishlist} = useContext(WishlistContext);
 
   return (
     <>
@@ -76,7 +71,7 @@ const Header: React.FC = () => {
               <Badge icon={<SlRefresh className="fs-4" />} count={0} />
             </div>
             <div className="wishlist">
-              <Badge icon={<SlHeart className="fs-4" />} count={0} />
+              <Badge icon={<SlHeart className="fs-4" />} count={wishlist.length} />
             </div>
             <div className="account">
               <button className="bg-transparent border-0 pe-0">
