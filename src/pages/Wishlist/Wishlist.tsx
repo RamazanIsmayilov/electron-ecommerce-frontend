@@ -2,16 +2,34 @@ import React, { useContext } from "react";
 import { BsTrash3 } from "react-icons/bs";
 import { WishlistContext } from "../../context/WishlistContext";
 import { CartContext } from "../../context/CartContext";
+import { ConfirmationContext } from "../../context/ConfirmationContext";
+import { NotificationContext } from "../../context/NotificationContext";
 
 const Cart: React.FC = () => {
-  const { wishlist, removeFromWishlist, removeAllWishlist } =
-    useContext(WishlistContext);
-
+  const { wishlist, removeFromWishlist, removeAllWishlist } = useContext(WishlistContext);
   const { addToCart, cart } = useContext(CartContext);
+  const { confirm } = useContext(ConfirmationContext)
+  const { successNotification, errorNotification } = useContext(NotificationContext)
 
   const isInCart = (id: number) => {
     return cart.some((cartItem) => cartItem.id === id);
   };
+
+  const removeAllWishlistHandler = async () => {
+    const isConfirmed = await confirm('All your products will be deleted');
+    if (!isConfirmed) {
+      return;
+    }
+  
+    try {
+      await removeAllWishlist(); // `await` istifadə edin əgər `removeAllWishlist` asinxron funksiyadırsa
+      successNotification('All your products have been successfully deleted');
+    } catch (error) {
+      console.error('Error removing wishlist:', error);
+      errorNotification('Failed to remove all products. Please try again.');
+    }
+  };
+  
 
   return (
     <div className="wishlist-page mt-5">
@@ -42,7 +60,7 @@ const Cart: React.FC = () => {
                   <button className="add-btn"
                     onClick={() => addToCart({ ...item, quantity: 1 })}
                     disabled={isInCart(item.id)}
-                    style={{opacity: isInCart(item.id) ? "0.5" : "1"}}
+                    style={{ opacity: isInCart(item.id) ? "0.5" : "1" }}
                   >
                     {isInCart(item.id) ? "Already in Cart" : "Add to Cart"}
                   </button>
@@ -60,7 +78,7 @@ const Cart: React.FC = () => {
           </table>
         )}
         {wishlist.length > 0 && (
-          <button className="remove-all" onClick={removeAllWishlist}>
+          <button className="remove-all" onClick={removeAllWishlistHandler}>
             Remove All Items
           </button>
         )}

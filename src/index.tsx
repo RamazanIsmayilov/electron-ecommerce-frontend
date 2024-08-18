@@ -12,6 +12,7 @@ import { FilterProvider } from "./context/FilterContext";
 import { CartProvider } from "./context/CartContext";
 import { NotificationProvider } from "./context/NotificationContext";
 import WishlistProvider from "./context/WishlistContext";
+import { ConfirmationProvider } from "./context/ConfirmationContext";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -22,7 +23,9 @@ root.render(
         <CartProvider>
           <WishlistProvider>
             <NotificationProvider>
-              <App />
+              <ConfirmationProvider>
+                <App />
+              </ConfirmationProvider>
             </NotificationProvider>
           </WishlistProvider>
         </CartProvider>

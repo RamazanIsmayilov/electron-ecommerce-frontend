@@ -3,8 +3,19 @@ import { CartContext } from "../../context/CartContext";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { BsTrash3 } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { ConfirmationContext } from "../../context/ConfirmationContext";
 const Cart: React.FC = () => {
   const {cart, increaseQuantity, decreaseQuantity, totalPrice, removeFromCart, removeAllCart} = useContext(CartContext);
+  const { confirm } = useContext(ConfirmationContext)
+
+  const removeAllCartHandler = async () => {
+    const isConfirmed = await confirm('All your products will be deleted');
+    if (!isConfirmed) {
+      return;
+    } else {
+      removeAllCart();
+    }
+  };
 
   return (
     <div className="cart-page mt-5">
@@ -63,7 +74,7 @@ const Cart: React.FC = () => {
                 </table>
               )}
               {cart.length > 0 && (
-                <button className="remove-all" onClick={removeAllCart}>
+                <button className="remove-all" onClick={removeAllCartHandler}>
                   Remove All Items
                 </button>
               )}
