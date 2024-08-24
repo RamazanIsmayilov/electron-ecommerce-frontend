@@ -1,0 +1,32 @@
+@import "../../assets/sass/_mixin.scss";
+
+.about-page {
+  .hero {
+    background-color: #161616;
+    mix-blend-mode: initial;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url("https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/careers-2.jpg");
+
+    p {
+      font-size: 12px;
+      letter-spacing: 0.4px;
+    }
+
+    h3{
+        font-size: 44px;
+    }
+
+    h5{
+        letter-spacing: .4px;
+        font-size: 16px;
+        line-height: 23px;
+    }
+  }
+  .containers {
+    @include container;
+  }
+}
