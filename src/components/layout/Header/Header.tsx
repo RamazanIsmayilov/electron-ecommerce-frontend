@@ -44,7 +44,7 @@ const Header: React.FC = () => {
           <div className="search">
             <Search />
           </div>
-          <div className="right d-flex gap-3">
+          <div className="right d-flex align-items-center gap-3">
             <div className="phone">
               <Link
                 to="tel:2809003434"
@@ -79,9 +79,9 @@ const Header: React.FC = () => {
               </Link>
             </div>
             <div className="account">
-              <button className="bg-transparent border-0 pe-0">
+              <Link to='/register' className="bg-transparent text-dark border-0 pe-0">
                 <HiOutlineUserCircle className="fs-3" />
-              </button>
+              </Link>
             </div>
             <div className="notification">
               <Popover placement="bottomRight" content={content}>

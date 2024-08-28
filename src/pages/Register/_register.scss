@@ -1,0 +1,29 @@
+.register-page {
+  .header {
+    background-color: #f7f7f8;
+    .direction a,
+    p {
+      font-size: 10px;
+    }
+  }
+
+  .register {
+    form {
+      label {
+        font-size: 13px;
+      }
+
+      input {
+        font-size: 14px;
+        &::placeholder {
+          font-size: 12px;
+          color: gray;
+        }
+      }
+
+      button {
+        background-color: #2252d1;
+      }
+    }
+  }
+}

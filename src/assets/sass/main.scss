@@ -17,6 +17,7 @@
 @import url("../../components/common/SingleCard/_singlecard.scss");
 @import url("../../components/common/Spinner/_spinner.scss");
 @import url("../../components/common/Notification/_notification.scss");
+@import url("../../components/common/DirectionHeader/_direction-header.scss");
 
 // ---------------- pages ----------------
 @import url("../../pages/Home/_home.scss");
@@ -25,3 +26,6 @@
 @import url("../../pages/Cart/_cart.scss");
 @import url("../../pages/Wishlist/_wishlist.scss");
 @import url("../../pages/About/_about.scss");
+@import url("../../pages/Register/_register.scss");
+@import url("../../pages/Login/_login.scss");
+@import url("../../pages/ForgotPassword/_forgotpassword.scss");
