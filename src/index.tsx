@@ -7,7 +7,7 @@ import "./assets/sass/main.scss";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { ProductProvider } from "./context/ProductContext";
+// import { ProductProvider } from "./context/ProductContext";
 import { CartProvider } from "./context/CartContext";
 import { NotificationProvider } from "./context/NotificationContext";
 import WishlistProvider from "./context/WishlistContext";
@@ -17,7 +17,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <>
-    <ProductProvider>
+    {/* <ProductProvider> */}
       <CartProvider>
         <WishlistProvider>
           <NotificationProvider>
@@ -27,6 +27,6 @@ root.render(
           </NotificationProvider>
         </WishlistProvider>
       </CartProvider>
-    </ProductProvider>
+    {/* </ProductProvider> */}
   </>
 );
