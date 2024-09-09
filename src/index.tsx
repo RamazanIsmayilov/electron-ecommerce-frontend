@@ -8,7 +8,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { ProductProvider } from "./context/ProductContext";
-import { FilterProvider } from "./context/FilterContext";
 import { CartProvider } from "./context/CartContext";
 import { NotificationProvider } from "./context/NotificationContext";
 import WishlistProvider from "./context/WishlistContext";
@@ -18,18 +17,16 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <>
-    <FilterProvider>
-      <ProductProvider>
-        <CartProvider>
-          <WishlistProvider>
-            <NotificationProvider>
-              <ConfirmationProvider>
-                <App />
-              </ConfirmationProvider>
-            </NotificationProvider>
-          </WishlistProvider>
-        </CartProvider>
-      </ProductProvider>
-    </FilterProvider>
+    <ProductProvider>
+      <CartProvider>
+        <WishlistProvider>
+          <NotificationProvider>
+            <ConfirmationProvider>
+              <App />
+            </ConfirmationProvider>
+          </NotificationProvider>
+        </WishlistProvider>
+      </CartProvider>
+    </ProductProvider>
   </>
 );
