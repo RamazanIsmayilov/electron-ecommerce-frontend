@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { isAdmin } from '../../services/authService';
+import { isAdmin, login } from '../../services/authService';
 import DirectionHeader from '../../components/common/DirectionHeader/DirectionHeader';
 import { NotificationContext } from '../../context/NotificationContext';
+import Notification from '../../components/common/Notification/Notification';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -15,37 +16,28 @@ const Login: React.FC = () => {
 
     if (!email || !password) {
       warningNotification('Please fill in all fields!');
-      return;
-    }
-
-    try {
-      const response = await fetch('http://localhost:5001/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
+    } else {
+      try {
+        const data = await login(email, password);
         const { token } = data;
 
         if (token) {
           localStorage.setItem('token', token);
           if (isAdmin()) {
             successNotification('Login successful. Redirecting to the dashboard...');
-            navigate('/dashboard');
+            setTimeout(() => {
+              navigate('/dashboard');
+            }, 1500);
           } else {
             successNotification('Login successful. Redirecting to the homepage...');
-            navigate('/');
+            setTimeout(() => {
+              navigate('/');
+            }, 1500);
           }
-        } else {
-          errorNotification('Invalid email or password.');
         }
-      } else {
-        errorNotification('Invalid email or password.');
+      } catch (error) {
+        errorNotification('An error occurred during login. Please try again.');
       }
-    } catch (error) {
-      errorNotification('An error occurred during login. Please try again.');
     }
   };
 
@@ -63,7 +55,6 @@ const Login: React.FC = () => {
                 className="form-control shadow-none"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
               />
             </div>
             <div className="mb-3">
@@ -74,13 +65,13 @@ const Login: React.FC = () => {
                 className="form-control shadow-none"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
               />
             </div>
             <div className="login-question d-flex align-items-center justify-content-end">
               <Link to='/forgotpassword'>Forgot your password?</Link>
             </div>
             <button type="submit" className="btn text-white fw-medium fs-6">Submit</button>
+            <Notification />
           </form>
         </div>
       </div>

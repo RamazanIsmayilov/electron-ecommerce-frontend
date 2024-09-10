@@ -1,18 +1,38 @@
+import axios from 'axios'
+const BASE_URL = 'http://localhost:5001/auth'
 
-export const getUserRole = () => {
-    const token = localStorage.getItem("token")
-    if (token) {
-        try {
-            const payload = JSON.parse(atob(token.split('.')[1]))
-            return payload.role
-        } catch (error) {
-            console.error('Token decryption failed:', error);
-        }
+export const login = async (email: string, password: string) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/login`, {
+            email,
+            password
+        });
+        return response.data;
+    } catch (error) {
+        throw new Error('An error occurred during login');
     }
-    return null
 }
 
-export const isAdmin = () => {
-    const role = getUserRole()
-    return role === "admin"
-}
+export const register = async (name: string, surname: string, email: string, password: string) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/register`, {
+            name,
+            surname,
+            email,
+            password
+        });
+        return response.data;
+    } catch (error) {
+        throw new Error('An error occurred during registration');
+    }
+};
+
+export const isAdmin = (): boolean => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        return payload.role === 'admin';
+    } else {
+        return false;
+    }
+};

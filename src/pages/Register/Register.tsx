@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import DirectionHeader from '../../components/common/DirectionHeader/DirectionHeader'
 import Notification from '../../components/common/Notification/Notification';
 import { NotificationContext } from '../../context/NotificationContext';
+import { register } from '../../services/authService';
 
 const Register: React.FC = () => {
   const [name, setName] = useState('');
@@ -13,30 +14,21 @@ const Register: React.FC = () => {
   const { successNotification, warningNotification, errorNotification } = useContext(NotificationContext);
 
   const handleRegister = async (e: React.FormEvent) => {
-    e.preventDefault(); 
+    e.preventDefault();
     if (!name || !surname || !email || !password) {
       warningNotification('Please fill in all fields!');
     } else {
       try {
-        const response = await fetch('http://localhost:5001/auth/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, surname, email, password }),
-        });
-
-        if (response.ok) {
-          successNotification('Registration successful!');
-          setTimeout(() => {
-            navigate('/login');
-          }, 1000)
-        } else {
-          warningNotification('Such a user is available.');
-        }
+        await register(name, surname, email, password); 
+        successNotification('Registration successful!');
+        setTimeout(() => {
+          navigate('/login');
+        }, 1000);
       } catch (error) {
-        errorNotification('An error occurred during registration.Please try again.');
+        errorNotification('An error occurred during registration. Please try again.');
       }
     }
-  }
+  };
 
   return (
     <div className='register-page'>
