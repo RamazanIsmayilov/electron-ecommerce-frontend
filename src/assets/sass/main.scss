@@ -9,6 +9,7 @@
 @import url("../../components/layout/Footer/_footer.scss");
 @import url("../../components/layout/Footer/BottomFooter/_bottomfooter.scss");
 @import url("../../components/layout/Header/MobileNav/_mobilenav.scss");
+@import url("../../components/layout/DashboardSidebar/_dashboardSidebar.scss");
 @import url("../../components/common/Search/_search.scss");
 @import url("../../components/common/Dropdown/_dropdown.scss");
 @import url("../../components/common/CategoryMenu/_categorymenu.scss");
@@ -18,6 +19,7 @@
 @import url("../../components/common/Spinner/_spinner.scss");
 @import url("../../components/common/Notification/_notification.scss");
 @import url("../../components/common/DirectionHeader/_direction-header.scss");
+@import url("../../components/common/Modal/modal.scss");
 
 // ---------------- pages ----------------
 @import url("../../pages/Home/_home.scss");
@@ -29,3 +31,5 @@
 @import url("../../pages/Register/_register.scss");
 @import url("../../pages/Login/_login.scss");
 @import url("../../pages/ForgotPassword/_forgotpassword.scss");
+@import url("../../pages/admin/Products/_products.scss");
+@import url("../../pages/admin//Categories/categories.scss");

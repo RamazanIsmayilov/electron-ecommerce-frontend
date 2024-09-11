@@ -1,0 +1,19 @@
+.dashboard-sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #111c43;
+
+  nav ul li {
+    .active {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+    a {
+      color: #a3aed1;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.categories {
+  .add {
+    button {
+      background-color: #111c43;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      margin: 20px;
+    }
+  }
+
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 13px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  }
+}
