@@ -1,32 +1,92 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaRegTrashCan } from "react-icons/fa6";
 import { FaRegEdit } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
 import Modal from '../../../components/common/Modal/Modal';
-import { addCategory } from '../../../services/categoryService';
+import { addCategory, deleteCategory, getCategories, updateCategory } from '../../../services/categoryService';
+import { NotificationContext } from '../../../context/NotificationContext';
+import Notification from '../../../components/common/Notification/Notification';
 
 const Categories: React.FC = () => {
-  const [modal, setModal] = useState(false);
-  const [category, setCategory] = useState('')
+  const [modal, setModal] = useState<boolean>(false);
+  const [categories, setCategories] = useState<any[]>([]);
+  const [categoryName, setCategoryName] = useState<string>('');
+  const [categoryId, setCategoryId] = useState<string | null>(null);
+  const [editMode, setEditMode] = useState<boolean>(false);
+  const { successNotification, warningNotification, errorNotification } = useContext(NotificationContext);
 
-  const handleModal = () => {
-    setModal(!modal);
+
+  const handleModal = (editMode: boolean = false) => {
+    if (!editMode) {
+      setCategoryName('');
+      setCategoryId(null);
+    }
+    setEditMode(editMode);
+    setModal(!modal);     
   };
 
   const handleCategory = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!category) {
-      console.log('Category name is required');
-    }else{
+    e.preventDefault();
+    if (!categoryName) {
+      warningNotification('Category name is required');
+    } else {
       try {
-        await addCategory(category)
-        console.log('Category added successfully');
+        if (editMode) {
+          const response = await updateCategory(categoryId!, categoryName);
+          if (response) {
+            fetchCategories();
+            successNotification('Category successfully updated.');
+            setCategoryName('');
+            setEditMode(false);
+            handleModal();
+          }
+        } else {
+          const response = await addCategory(categoryName);
+          if (response) {
+            fetchCategories();
+            successNotification('Category was successfully added.');
+            setCategoryName('');
+            handleModal();
+          }
+        }
       } catch (error) {
-        console.log(error);
-        
+        errorNotification('An error occurred while handling the category.');
       }
     }
-  }
+  };
+
+  const fetchCategories = async () => {
+    try {
+      const response = await getCategories();
+      if (response) {
+        setCategories(response);
+      } else {
+        console.log('No categories found');
+      }
+    } catch (error) {
+      console.log('An error occurred while fetching categories.', error);
+    }
+  };
+
+  const handleEditCategory = (id: string, name: string) => {
+    setCategoryName(name); 
+    setCategoryId(id); 
+    handleModal(true); 
+  };
+
+  const handleDeleteCategory = async (id: string) => {
+    const result = await deleteCategory(id);
+    if (result) {
+      successNotification('Category deleted successfully');
+      fetchCategories()
+    } else {
+      errorNotification('Failed to delete category');
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   return (
     <div className='categories bg-light shadow py-3'>
@@ -38,11 +98,17 @@ const Categories: React.FC = () => {
           </div>
         </div>
         {modal && (
-          <Modal title='Add Category' handleClose={handleModal}>
+          <Modal title={editMode ? 'Edit Category' : 'Add Category'}  handleClose={handleModal}>
             <form onSubmit={handleCategory}>
               <div className="form-group mb-3">
                 <label htmlFor="productName">Category Name</label>
-                <input type="text" className="form-control shadow-none" placeholder="Enter category name..." value={category} onChange={(e: any) => setCategory(e.target.value)} />
+                <input
+                  type="text"
+                  className="form-control shadow-none"
+                  placeholder="Enter category name..."
+                  value={categoryName}
+                  onChange={(e) => setCategoryName(e.target.value)}
+                />
               </div>
               <button type="submit" className="btn btn-primary w-100">Add Category</button>
             </form>
@@ -57,20 +123,29 @@ const Categories: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className='text-center'>
-              <td>1</td>
-              <td>Mark</td>
-              <td className='d-flex align-items-center justify-content-center gap-2'>
-                <button className='border-0 bg-transparent text-danger fs-5'><FaRegTrashCan /></button>
-                <button className='border-0 bg-transparent text-primary fs-5'><FaRegEdit /></button>
-              </td>
-            </tr>
+            {categories.length > 0 ? (
+              categories.map((item: any) => (
+                <tr className='text-center' key={item._id}>
+                  <td>{item._id}</td>
+                  <td>{item.name}</td>
+                  <td className='d-flex align-items-center justify-content-center gap-2'>
+                    <button onClick={() => handleDeleteCategory(item._id)} className='border-0 bg-transparent text-danger fs-5'><FaRegTrashCan /></button>
+                    <button onClick={() => handleEditCategory(item._id, item.name)} className='border-0 bg-transparent text-primary fs-5'><FaRegEdit /></button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={3} className='text-center'>No categories available</td>
+              </tr>
+            )}
           </tbody>
         </table>
         <div className="add">
-          <button onClick={handleModal} type="button" className="text-light rounded-circle p-3 fs-5">
+          <button onClick={() => handleModal(false)} type="button" className="text-light rounded-circle p-3 fs-5">
             <FaPlus />
           </button>
+          <Notification />
         </div>
       </div>
     </div>
