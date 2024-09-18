@@ -6,15 +6,19 @@ import Modal from '../../../components/common/Modal/Modal';
 import { addCategory, deleteCategory, getCategories, updateCategory } from '../../../services/categoryService';
 import { NotificationContext } from '../../../context/NotificationContext';
 import Notification from '../../../components/common/Notification/Notification';
+import { searchCategories } from '../../../services/searchService';
+import Pagination from '@mui/material/Pagination';
 
 const Categories: React.FC = () => {
   const [modal, setModal] = useState<boolean>(false);
-  const [categories, setCategories] = useState<any[]>([]);
   const [categoryName, setCategoryName] = useState<string>('');
   const [categoryId, setCategoryId] = useState<string | null>(null);
   const [editMode, setEditMode] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [filteredCategories, setFilteredCategories] = useState<any[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [rowsPerPage] = useState<number>(8);
   const { successNotification, warningNotification, errorNotification } = useContext(NotificationContext);
-
 
   const handleModal = (editMode: boolean = false) => {
     if (!editMode) {
@@ -22,7 +26,7 @@ const Categories: React.FC = () => {
       setCategoryId(null);
     }
     setEditMode(editMode);
-    setModal(!modal);     
+    setModal(!modal);
   };
 
   const handleCategory = async (e: React.FormEvent) => {
@@ -59,7 +63,7 @@ const Categories: React.FC = () => {
     try {
       const response = await getCategories();
       if (response) {
-        setCategories(response);
+        setFilteredCategories(response);
       } else {
         console.log('No categories found');
       }
@@ -69,20 +73,37 @@ const Categories: React.FC = () => {
   };
 
   const handleEditCategory = (id: string, name: string) => {
-    setCategoryName(name); 
-    setCategoryId(id); 
-    handleModal(true); 
+    setCategoryName(name);
+    setCategoryId(id);
+    handleModal(true);
   };
 
   const handleDeleteCategory = async (id: string) => {
     const result = await deleteCategory(id);
     if (result) {
       successNotification('Category deleted successfully');
-      fetchCategories()
+      fetchCategories();
     } else {
       errorNotification('Failed to delete category');
     }
   };
+
+  const handleSearchCategory = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    try {
+      const result = await searchCategories(query);
+      setFilteredCategories(result || []);
+    } catch (error) {
+      console.log('An error occurred while searching categories.', error);
+    }
+  };
+
+  const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const paginatedCategories = filteredCategories.slice((page - 1) * rowsPerPage, page * rowsPerPage);
 
   useEffect(() => {
     fetchCategories();
@@ -94,11 +115,11 @@ const Categories: React.FC = () => {
         <div className="title d-flex align-items-center justify-content-between">
           <h2 className='fs-4 fw-bold'>Categories Overview</h2>
           <div className="input-group w-25">
-            <input type="text" className='form-control shadow-none' placeholder='Search category...' />
+            <input value={searchQuery} onChange={handleSearchCategory} type="text" className='form-control shadow-none' placeholder='Search category...' />
           </div>
         </div>
         {modal && (
-          <Modal title={editMode ? 'Edit Category' : 'Add Category'}  handleClose={handleModal}>
+          <Modal title={editMode ? 'Edit Category' : 'Add Category'} handleClose={handleModal}>
             <form onSubmit={handleCategory}>
               <div className="form-group mb-3">
                 <label htmlFor="productName">Category Name</label>
@@ -110,7 +131,7 @@ const Categories: React.FC = () => {
                   onChange={(e) => setCategoryName(e.target.value)}
                 />
               </div>
-              <button type="submit" className="btn btn-primary w-100">Add Category</button>
+              <button type="submit" className="btn btn-primary w-100">{editMode ? 'Update Category' : 'Add Category'}</button>
             </form>
           </Modal>
         )}
@@ -123,8 +144,8 @@ const Categories: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {categories.length > 0 ? (
-              categories.map((item: any) => (
+            {paginatedCategories.length > 0 ? (
+              paginatedCategories.map((item: any) => (
                 <tr className='text-center' key={item._id}>
                   <td>{item._id}</td>
                   <td>{item.name}</td>
@@ -141,6 +162,15 @@ const Categories: React.FC = () => {
             )}
           </tbody>
         </table>
+        {filteredCategories.length > 0 ?
+          <Pagination
+            count={Math.ceil(filteredCategories.length / rowsPerPage)}
+            page={page}
+            onChange={handlePageChange}
+            variant="outlined"
+            shape="rounded"
+            className="mt-3 d-flex justify-content-center"
+          /> : ''}
         <div className="add">
           <button onClick={() => handleModal(false)} type="button" className="text-light rounded-circle p-3 fs-5">
             <FaPlus />
