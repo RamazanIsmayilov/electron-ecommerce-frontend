@@ -16,7 +16,6 @@ export const addBrand = async (brandName: string) => {
     }
 };
 
-
 export const getBrands = async () => {
     try {
         const response = await axios.get(BASE_URL,
@@ -24,7 +23,7 @@ export const getBrands = async () => {
         )
         return response.data
     } catch (error) {
-        console.log('Failed to fetch brands');
+        console.error('Failed to fetch brands', error);
     }
 }
 
@@ -35,7 +34,7 @@ export const deleteBrand = async (id: string) => {
         })
         return response.data
     } catch (error) {
-        console.log('Failed to delete brands');
+        console.error('Failed to delete brand', error);
     }
 }
 
@@ -48,6 +47,6 @@ export const updateBrand = async (id: string, updatedName: string) => {
         )
         return response.data
     } catch (error) {
-        console.log('Failed to update brand');
+        console.error('Failed to update brand', error);
     }
 }

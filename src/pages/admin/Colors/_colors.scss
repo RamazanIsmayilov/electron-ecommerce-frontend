@@ -1,0 +1,6 @@
+@import "../../../assets/sass/_mixin.scss";
+
+.colors {
+  @include add-button;
+  @include table;
+}

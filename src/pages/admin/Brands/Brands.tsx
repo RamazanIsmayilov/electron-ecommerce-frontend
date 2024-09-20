@@ -5,15 +5,19 @@ import { FaRegEdit } from 'react-icons/fa';
 import Modal from '../../../components/common/Modal/Modal';
 import { NotificationContext } from '../../../context/NotificationContext';
 import { addBrand, deleteBrand, getBrands, updateBrand } from '../../../services/brandService';
+import { searchBrands } from '../../../services/searchService';
+import { Pagination } from '@mui/material';
 
 const Brands: React.FC = () => {
   const [modal, setModal] = useState<boolean>(false);
-  const [brands, setBrands] = useState<any[]>([]);
   const [brandName, setBrandName] = useState<string>('');
   const [brandId, setBrandId] = useState<string | null>(null);
   const [editMode, setEditMode] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [filteredBrands, setFilteredBrands] = useState<any[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [rowsPerPage] = useState<number>(8);
   const { successNotification, warningNotification, errorNotification } = useContext(NotificationContext);
-
 
   const handleModal = (editMode: boolean = false) => {
     if (!editMode) {
@@ -41,7 +45,7 @@ const Brands: React.FC = () => {
         } else {
           await addBrand(brandName);
           fetchBrands();
-          successNotification('Brand was successfully added.');
+          successNotification('Brand successfully added.');
           setBrandName('');
           handleModal();
         }
@@ -51,35 +55,51 @@ const Brands: React.FC = () => {
     }
   };
 
-
   const fetchBrands = async () => {
     try {
-      const response = await getBrands()
-      setBrands(response)
+      const response = await getBrands();
+      setFilteredBrands(response);
     } catch (error) {
       console.log('An error occurred while fetching brands.', error);
     }
-  }
+  };
 
   const handleEditBrand = (id: string, name: string) => {
-    setBrandName(name)
-    setBrandId(id)
+    setBrandName(name);
+    setBrandId(id);
     handleModal(true);
-  }
+  };
 
   const handleDeleteBrand = async (id: string) => {
-    const result = await deleteBrand(id)
+    const result = await deleteBrand(id);
     if (result) {
       successNotification('Brand deleted successfully');
-      fetchBrands()
+      fetchBrands();
     } else {
       errorNotification('Failed to delete brand');
     }
-  }
+  };
+
+  const handleSearchBrand = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    try {
+      const result = await searchBrands(query);
+      setFilteredBrands(result);
+    } catch (error) {
+      console.log('An error occurred while searching brands.', error);
+    }
+  };
+
+  const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const paginatedBrands = filteredBrands.slice((page - 1) * rowsPerPage, page * rowsPerPage);
 
   useEffect(() => {
-    fetchBrands()
-  }, [])
+    fetchBrands();
+  }, []);
 
   return (
     <div className='categories bg-light shadow py-3'>
@@ -87,7 +107,7 @@ const Brands: React.FC = () => {
         <div className="title d-flex align-items-center justify-content-between">
           <h2 className='fs-4 fw-bold'>Brands Overview</h2>
           <div className="input-group w-25">
-            <input type="text" className='form-control shadow-none' placeholder='Search brand...' />
+            <input value={searchQuery} onChange={handleSearchBrand} type="text" className='form-control shadow-none' placeholder='Search brand...' />
           </div>
         </div>
         {modal && (
@@ -117,8 +137,8 @@ const Brands: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {brands.length > 0 ? (
-              brands.map((item: any) => (
+            {paginatedBrands.length > 0 ? (
+              paginatedBrands.map((item: any) => (
                 <tr className='text-center' key={item._id}>
                   <td>{item._id}</td>
                   <td>{item.name}</td>
@@ -135,6 +155,16 @@ const Brands: React.FC = () => {
             )}
           </tbody>
         </table>
+        {filteredBrands.length > rowsPerPage && (
+          <Pagination
+            count={Math.ceil(filteredBrands.length / rowsPerPage)}
+            page={page}
+            onChange={handlePageChange}
+            variant="outlined"
+            shape="rounded"
+            className="mt-3 d-flex justify-content-center"
+          />
+        )}
         <div className="add">
           <button onClick={() => handleModal(false)} className="text-light rounded-circle p-3 fs-5">
             <FaPlus />

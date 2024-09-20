@@ -93,7 +93,7 @@ const Categories: React.FC = () => {
     setSearchQuery(query);
     try {
       const result = await searchCategories(query);
-      setFilteredCategories(result || []);
+      setFilteredCategories(result);
     } catch (error) {
       console.log('An error occurred while searching categories.', error);
     }
@@ -162,7 +162,7 @@ const Categories: React.FC = () => {
             )}
           </tbody>
         </table>
-        {filteredCategories.length > 0 ?
+        {filteredCategories.length > rowsPerPage &&
           <Pagination
             count={Math.ceil(filteredCategories.length / rowsPerPage)}
             page={page}
@@ -170,7 +170,7 @@ const Categories: React.FC = () => {
             variant="outlined"
             shape="rounded"
             className="mt-3 d-flex justify-content-center"
-          /> : ''}
+          />}
         <div className="add">
           <button onClick={() => handleModal(false)} type="button" className="text-light rounded-circle p-3 fs-5">
             <FaPlus />
