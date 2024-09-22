@@ -74,7 +74,6 @@ const Colors: React.FC = () => {
 
   const handleSearchColor = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value
-    console.log(query);
     setSearchQuery(query)
     try {
       const result = await searchColors(query);

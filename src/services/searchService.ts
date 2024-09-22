@@ -38,3 +38,15 @@ export const searchColors = async (query: string) => {
         console.error('Error while searching colors:', error);
     }
 }
+
+export const searchConnectivities = async (query: string) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/connectivities/search`, {
+            params: { query },
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        return response.data
+    } catch (error) {
+        console.error('Error while searching connectivities:', error);
+    }
+}
