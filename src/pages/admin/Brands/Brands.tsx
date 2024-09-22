@@ -124,7 +124,7 @@ const Brands: React.FC = () => {
                   onChange={(e) => setBrandName(e.target.value)}
                 />
               </div>
-              <button type="submit" className="btn btn-primary w-100">Add Brand</button>
+              <button type="submit" className="btn btn-primary w-100">{editMode ? 'Edit Brand' : 'Add Brand'}</button>
             </form>
           </Modal>
         )}

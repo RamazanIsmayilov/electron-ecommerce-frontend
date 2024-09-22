@@ -62,3 +62,15 @@ export const searchSizes = async (query: string) => {
         console.error('Error while searching sizes:', error);
     }
 }
+
+export const searchStorages = async (query: string) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/storages/search`, {
+            params: { query },
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        return response.data
+    } catch (error) {
+        console.error('Error while searching storages:', error);
+    }
+}

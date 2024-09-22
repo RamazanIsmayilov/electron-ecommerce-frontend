@@ -125,7 +125,7 @@ const Colors: React.FC = () => {
                   style={{ backgroundColor: colorName.toLowerCase() }}
                 />
               </div>
-              <button type="submit" className="btn btn-primary w-100">Add Color</button>
+              <button type="submit" className="btn btn-primary w-100">{editMode ? 'Edit Color' : 'Add Color'}</button>
             </form>
           </Modal>
         )}

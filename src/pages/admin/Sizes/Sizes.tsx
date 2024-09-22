@@ -124,7 +124,7 @@ const Sizes: React.FC = () => {
                   onChange={(e) => setSizeName(e.target.value)}
                 />
               </div>
-              <button type="submit" className="btn btn-primary w-100">Add Size</button>
+              <button type="submit" className="btn btn-primary w-100">{editMode ? 'Edit Size' : 'Add Size'}</button>
             </form>
           </Modal>
         )}

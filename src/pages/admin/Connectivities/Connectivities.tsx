@@ -124,7 +124,7 @@ const Connectivities: React.FC = () => {
                   onChange={(e) => setConnectivityName(e.target.value)}
                 />
               </div>
-              <button type="submit" className="btn btn-primary w-100">Add Connectivity</button>
+              <button type="submit" className="btn btn-primary w-100">{editMode ? 'Edit Connectivity' : 'Add Connectivity'}</button>
             </form>
           </Modal>
         )}

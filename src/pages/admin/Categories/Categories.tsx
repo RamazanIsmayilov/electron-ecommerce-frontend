@@ -131,7 +131,7 @@ const Categories: React.FC = () => {
                   onChange={(e) => setCategoryName(e.target.value)}
                 />
               </div>
-              <button type="submit" className="btn btn-primary w-100">{editMode ? 'Update Category' : 'Add Category'}</button>
+              <button type="submit" className="btn btn-primary w-100">{editMode ? 'Edit Category' : 'Add Category'}</button>
             </form>
           </Modal>
         )}

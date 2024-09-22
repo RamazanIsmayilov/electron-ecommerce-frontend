@@ -8,6 +8,7 @@ import Brands from '../pages/admin/Brands/Brands';
 import Colors from '../pages/admin/Colors/Colors';
 import Connectivities from '../pages/admin/Connectivities/Connectivities';
 import Sizes from '../pages/admin/Sizes/Sizes';
+import Storages from '../pages/admin/Storages/Storages';
 
 const PrivateRoute: React.FC = () => {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ const PrivateRoute: React.FC = () => {
         <Route path="colors" element={<Colors />} />
         <Route path="connectivities" element={<Connectivities />} />
         <Route path="sizes" element={<Sizes />} />
+        <Route path="storages" element={<Storages />} />
       </Route>
     </Routes>
   );

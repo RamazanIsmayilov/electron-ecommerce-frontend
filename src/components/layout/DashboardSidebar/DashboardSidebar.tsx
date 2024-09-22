@@ -31,6 +31,9 @@ const DashboardSidebar: React.FC = () => {
             <li>
               <NavLink to='/dashboard/sizes' className='d-flex aligm-items-center gap-2'><GoDot />Sizes</NavLink>
             </li>
+            <li>
+              <NavLink to='/dashboard/storages' className='d-flex aligm-items-center gap-2'><GoDot />Storages</NavLink>
+            </li>
           </ul>
         </nav>
       </div>
