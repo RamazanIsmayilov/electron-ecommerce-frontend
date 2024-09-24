@@ -12,7 +12,7 @@ export const addCategory = async (categoryName: string) => {
         );
         return response.data;
     } catch (error) {
-        console.log('Failed to add category');
+        console.error('Failed to add category', error);
     }
 }
 
