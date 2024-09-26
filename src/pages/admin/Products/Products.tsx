@@ -141,7 +141,7 @@ const Products: React.FC = () => {
     <div className='products bg-light shadow py-3'>
       <div className="container">
         <div className="title d-flex align-items-center justify-content-between">
-          <h2 className='fs-4 fw-bold'>Products Overview</h2>
+          <h2 className='text-2xl font-bold'>Products Overview</h2>
           <button onClick={handleModal} type="button" className="text-light rounded-circle p-3 fs-5">
             <FaPlus />
           </button>
@@ -261,6 +261,19 @@ const Products: React.FC = () => {
                   ))}
                 </Select>
               </div>
+              <div className="upload-image">
+                <div className="flex items-center justify-center w-full">
+                  <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-white dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500">
+                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                      <svg className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                      </svg>
+                      <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                    </div>
+                    <input id="dropzone-file" type="file" className="hidden" />
+                  </label>
+                </div>
+              </div>
               <button type="submit" className="btn btn-primary">Add Product</button>
             </form>
           </Modal>
@@ -283,31 +296,38 @@ const Products: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {products.map(item => (
-                <tr key={item._id} className='text-center'>
-                  <td>{item._id}</td>
-                  <td>{item.name.slice(0, 16)}...</td>
-                  <td>{item.description.slice(0, 16)}...</td>
-                  <td>{item.category.name}</td>
-                  <td>{item.brand.name}</td>
-                  <td>
-                    <div className="d-flex align-items-center justify-content-center gap-2">
-                      <div
-                        className="color rounded-circle"
-                        style={{ backgroundColor: `${item.color.name}`, width: '17px', height: '17px' }}
-                      ></div>
-                    </div>
-                  </td>
-                  <td>{item.storage.name}</td>
-                  <td>{item.size.name}</td>
-                  <td>{item.connectivity.name}</td>
-                  <td>${item.price}</td>
-                  <td className='d-flex align-items-center justify-content-center gap-2'>
-                    <button className='border-0 bg-transparent text-danger fs-5'><FaRegTrashCan /></button>
-                    <button className='border-0 bg-transparent text-primary fs-5'><FaRegEdit /></button>
-                  </td>
+              {products.length > 0 ? (
+                products.map(item => (
+                  <tr key={item._id} className='text-center'>
+                    <td>{item._id}</td>
+                    <td>{item.name.slice(0, 16)}...</td>
+                    <td>{item.description.slice(0, 16)}...</td>
+                    <td>{item.category.name}</td>
+                    <td>{item.brand.name}</td>
+                    <td>
+                      <div className="d-flex align-items-center justify-content-center gap-2">
+                        <div
+                          className="color rounded-circle"
+                          style={{ backgroundColor: `${item.color.name}`, width: '17px', height: '17px' }}
+                        ></div>
+                      </div>
+                    </td>
+                    <td>{item.storage.name}</td>
+                    <td>{item.size.name}</td>
+                    <td>{item.connectivity.name}</td>
+                    <td>${item.price}</td>
+                    <td className='d-flex align-items-center justify-content-center gap-2'>
+                      <button className='border-0 bg-transparent text-danger fs-5'><FaRegTrashCan /></button>
+                      <button className='border-0 bg-transparent text-primary fs-5'><FaRegEdit /></button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={11} className='text-center'>No products available</td>
                 </tr>
-              ))}
+              )
+              }
             </tbody>
           </table>
         </div>

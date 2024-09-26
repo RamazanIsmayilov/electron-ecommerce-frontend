@@ -4,6 +4,7 @@ import App from "./App";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import "./assets/sass/main.scss";
+import "../src/index.css"
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
