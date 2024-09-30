@@ -33,8 +33,10 @@ const Products: React.FC = () => {
     color: '',
     storage: '',
     size: '',
-    connectivity: ''
+    connectivity: '',
+    images: [] as File[]
   });
+  const [images, setImages] = useState<File[]>([]);
 
   const handleModal = () => {
     setModal(!modal);
@@ -113,10 +115,35 @@ const Products: React.FC = () => {
     fetchProducts();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setImages(Array.from(event.target.files));
+      setProductData({ ...productData, images: Array.from(event.target.files) });
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('name', productData.name);
+    formData.append('price', productData.price.toString());
+    formData.append('description', productData.description);
+    formData.append('category', productData.category);
+    formData.append('brand', productData.brand);
+    formData.append('color', productData.color);
+    formData.append('storage', productData.storage);
+    formData.append('size', productData.size);
+    formData.append('connectivity', productData.connectivity);
+
+    for (let i = 0; i < productData.images.length; i++) {
+      formData.append('images', productData.images[i]);
+    }
+    console.log(productData.images);
+    
+
     try {
-      const addedProduct = await addProduct(productData);
+      const addedProduct = await addProduct(formData);
       setProducts((prev) => [...prev, addedProduct]);
       setProductData({
         name: '',
@@ -127,11 +154,10 @@ const Products: React.FC = () => {
         color: '',
         storage: '',
         size: '',
-        connectivity: ''
+        connectivity: '',
+        images: [],
       });
-      handleModal();
-      console.log(productData);
-
+      setModal(false);
     } catch (error) {
       console.error('Error adding product:', error);
     }
@@ -261,20 +287,13 @@ const Products: React.FC = () => {
                   ))}
                 </Select>
               </div>
-              <div className="upload-image">
-                <div className="flex items-center justify-center w-full">
-                  <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-white dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500">
-                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                      <svg className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                      </svg>
-                      <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                    </div>
-                    <input id="dropzone-file" type="file" className="hidden" />
-                  </label>
-                </div>
+              <div className="form-group mb-3">
+                <label htmlFor="images">Images</label>
+                <Input type="file" onChange={handleImageChange} multiple />
               </div>
-              <button type="submit" className="btn btn-primary">Add Product</button>
+              <div className="d-flex justify-content-end">
+                <button type="submit" className="btn btn-primary">Add Product</button>
+              </div>
             </form>
           </Modal>
         )}
@@ -283,6 +302,7 @@ const Products: React.FC = () => {
             <thead>
               <tr className='text-center'>
                 <th scope="col">Product Id</th>
+                <th scope="col">Image</th>
                 <th scope="col">Name</th>
                 <th scope="col">Description</th>
                 <th scope="col">Category</th>
@@ -300,6 +320,12 @@ const Products: React.FC = () => {
                 products.map(item => (
                   <tr key={item._id} className='text-center'>
                     <td>{item._id}</td>
+                    <td>
+                      {images ?
+                        <img src={item.images} alt={item.name} width={50} />
+                        : 'No images'
+                      }
+                    </td>
                     <td>{item.name.slice(0, 16)}...</td>
                     <td>{item.description.slice(0, 16)}...</td>
                     <td>{item.category.name}</td>
