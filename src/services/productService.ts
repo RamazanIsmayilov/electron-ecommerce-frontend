@@ -3,7 +3,6 @@ import axios from "axios";
 const BASE_URL = 'http://localhost:5001/products';
 const token = localStorage.getItem('token');
 
-// Məhsulu əlavə etmək üçün funksiya
 export const addProduct = async (formData: FormData) => {
     try {
         const response = await axios.post(BASE_URL, formData, {
@@ -19,7 +18,6 @@ export const addProduct = async (formData: FormData) => {
     }
 };
 
-// Məhsulları əldə etmək üçün funksiya
 export const getProducts = async () => {
     try {
         const response = await axios.get(BASE_URL, {

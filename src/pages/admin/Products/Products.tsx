@@ -36,89 +36,43 @@ const Products: React.FC = () => {
     connectivity: '',
     images: [] as File[]
   });
-  const [images, setImages] = useState<File[]>([]);
 
   const handleModal = () => {
     setModal(!modal);
   };
 
+  const fetchData = async () => {
+    try {
+      const [categories, brands, colors, storages, sizes, connectivities, products] = await Promise.all([
+        getCategories(),
+        getBrands(),
+        getColors(),
+        getStorages(),
+        getSizes(),
+        getConnectivities(),
+        getProducts()
+      ]);
+      setCategories(categories);
+      setBrands(brands);
+      setColors(colors);
+      setStorages(storages);
+      setSizes(sizes);
+      setConnectivities(connectivities);
+      setProducts(products);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
   useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await getCategories();
-        setCategories(response);
-      } catch (error) {
-        console.error('Error fetching categories:', error);
-      }
-    };
+    fetchData()
+  }, [products])
 
-    const fetchBrands = async () => {
-      try {
-        const response = await getBrands();
-        setBrands(response);
-      } catch (error) {
-        console.error('Error fetching brands:', error);
-      }
-    };
-
-    const fetchColors = async () => {
-      try {
-        const response = await getColors();
-        setColors(response);
-      } catch (error) {
-        console.error('Error fetching colors:', error);
-      }
-    };
-
-    const fetchStorages = async () => {
-      try {
-        const response = await getStorages();
-        setStorages(response);
-      } catch (error) {
-        console.error('Error fetching storages:', error);
-      }
-    };
-
-    const fetchSizes = async () => {
-      try {
-        const response = await getSizes();
-        setSizes(response);
-      } catch (error) {
-        console.error('Error fetching sizes:', error);
-      }
-    };
-
-    const fetchConnectivities = async () => {
-      try {
-        const response = await getConnectivities();
-        setConnectivities(response);
-      } catch (error) {
-        console.error('Error fetching connectivities:', error);
-      }
-    };
-
-    const fetchProducts = async () => {
-      try {
-        const response = await getProducts();
-        setProducts(response);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
-
-    fetchCategories();
-    fetchBrands();
-    fetchColors();
-    fetchStorages();
-    fetchSizes();
-    fetchConnectivities();
-    fetchProducts();
-  }, []);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      setImages(Array.from(event.target.files));
-      setProductData({ ...productData, images: Array.from(event.target.files) });
+      const newImages = Array.from(event.target.files);
+      setProductData({ ...productData, images: [...productData.images, ...newImages] });
     }
   };
 
@@ -139,11 +93,10 @@ const Products: React.FC = () => {
     for (let i = 0; i < productData.images.length; i++) {
       formData.append('images', productData.images[i]);
     }
-    console.log(productData.images);
-    
 
     try {
       const addedProduct = await addProduct(formData);
+      await fetchData();
       setProducts((prev) => [...prev, addedProduct]);
       setProductData({
         name: '',
@@ -161,6 +114,7 @@ const Products: React.FC = () => {
     } catch (error) {
       console.error('Error adding product:', error);
     }
+
   };
 
   return (
@@ -321,26 +275,25 @@ const Products: React.FC = () => {
                   <tr key={item._id} className='text-center'>
                     <td>{item._id}</td>
                     <td>
-                      {images ?
-                        <img src={item.images} alt={item.name} width={50} />
-                        : 'No images'
-                      }
+                      {item.images && item.images.length > 0 ? (
+                        <img src={item.images[0]} alt={item.name} width={50} />
+                      ) : 'No images'}
                     </td>
-                    <td>{item.name.slice(0, 16)}...</td>
-                    <td>{item.description.slice(0, 16)}...</td>
-                    <td>{item.category.name}</td>
-                    <td>{item.brand.name}</td>
+                    <td>{item.name?.slice(0, 16)}...</td>
+                    <td>{item.description?.slice(0, 16)}...</td>
+                    <td>{item.category?.name}</td>
+                    <td>{item.brand?.name}</td>
                     <td>
                       <div className="d-flex align-items-center justify-content-center gap-2">
                         <div
                           className="color rounded-circle"
-                          style={{ backgroundColor: `${item.color.name}`, width: '17px', height: '17px' }}
+                          style={{ backgroundColor: `${item.color?.name}`, width: '17px', height: '17px' }}
                         ></div>
                       </div>
                     </td>
-                    <td>{item.storage.name}</td>
-                    <td>{item.size.name}</td>
-                    <td>{item.connectivity.name}</td>
+                    <td>{item.storage?.name}</td>
+                    <td>{item.size?.name}</td>
+                    <td>{item.connectivity?.name}</td>
                     <td>${item.price}</td>
                     <td className='d-flex align-items-center justify-content-center gap-2'>
                       <button className='border-0 bg-transparent text-danger fs-5'><FaRegTrashCan /></button>
@@ -352,9 +305,9 @@ const Products: React.FC = () => {
                 <tr>
                   <td colSpan={11} className='text-center'>No products available</td>
                 </tr>
-              )
-              }
+              )}
             </tbody>
+
           </table>
         </div>
       </div>
