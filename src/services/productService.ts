@@ -26,6 +26,17 @@ export const getProducts = async () => {
         return response.data;
     } catch (error) {
         console.error('Failed to fetch products', error);
-        throw error; 
+        throw error;
     }
 };
+
+export const deleteProduct = async (id: string) => {
+    try {
+        const response = await axios.delete(`${BASE_URL}/${id}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        return response.data
+    } catch (error) {
+        console.error('Failed to delete brand', error);
+    }
+}
