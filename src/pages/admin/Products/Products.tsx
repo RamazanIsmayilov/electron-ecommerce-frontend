@@ -9,9 +9,9 @@ import { getColors } from '../../../services/colorService';
 import { getStorages } from '../../../services/storageService';
 import { getSizes } from '../../../services/sizeService';
 import { getConnectivities } from '../../../services/connectivityService';
-import { Input, Select } from 'antd';
+import { Input, Pagination, Select } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
-import { addProduct, deleteProduct, getProducts } from '../../../services/productService';
+import { addProduct, deleteProduct, getProducts, updateProduct } from '../../../services/productService';
 import { NotificationContext } from '../../../context/NotificationContext';
 import Notification from '../../../components/common/Notification/Notification';
 
@@ -19,6 +19,11 @@ const { Option } = Select;
 
 const Products: React.FC = () => {
   const [modal, setModal] = useState(false);
+  const [editMode, setEditMode] = useState<boolean>(false);
+  const [editProductId, setEditProductId] = useState<string | null>(null);
+  const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [rowsPerPage] = useState<number>(8);
   const [categories, setCategories] = useState<any[]>([]);
   const [brands, setBrands] = useState<any[]>([]);
   const [colors, setColors] = useState<any[]>([]);
@@ -44,6 +49,7 @@ const Products: React.FC = () => {
   const handleModal = () => {
     setModal(!modal);
     setProductData({ ...productData, images: [] });
+    setEditMode(false);
   };
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,50 +61,58 @@ const Products: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { images, name, description, category, brand, color, price } = productData
+    const { images, name, description, category, brand, color, price } = productData;
 
-    if (!images || !name || !description || !category || !brand || !color || !price) {
+    if (!name || !images || !description || !category || !brand || !color || !price) {
       warningNotification('Please fill in the required inputs');
-    } else {
-      const formData = new FormData();
-      formData.append('name', productData.name);
-      formData.append('price', productData.price.toString());
-      formData.append('description', productData.description);
-      formData.append('category', productData.category);
-      formData.append('brand', productData.brand);
-      formData.append('color', productData.color);
-      formData.append('storage', productData.storage);
-      formData.append('size', productData.size);
-      formData.append('connectivity', productData.connectivity);
+      return;
+    }
 
-      for (let i = 0; i < productData.images.length; i++) {
-        formData.append('images', productData.images[i]);
-      }
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('price', price.toString());
+    formData.append('description', description);
+    formData.append('category', category);
+    formData.append('brand', brand);
+    formData.append('color', color);
+    formData.append('storage', productData.storage);
+    formData.append('size', productData.size);
+    formData.append('connectivity', productData.connectivity);
 
-      try {
+    productData.images.forEach((image) => {
+      formData.append('images', image);
+    });
+
+    try {
+      if (editMode && editProductId) {
+        await updateProduct(editProductId, formData);
+        successNotification('Product updated successfully');
+      } else {
         const addedProduct = await addProduct(formData);
-        await fetchProduct();
         setProducts((prev) => [...prev, addedProduct]);
-        setProductData({
-          name: '',
-          price: 0,
-          description: '',
-          category: '',
-          brand: '',
-          color: '',
-          storage: '',
-          size: '',
-          connectivity: '',
-          images: [],
-        });
-        setModal(false);
         successNotification('Product added successfully');
-      } catch (error) {
-        errorNotification('An error occurred while handling the product.');
-        console.error('Error adding product:', error);
       }
+
+      await fetchProduct();
+      setProductData({
+        name: '',
+        price: 0,
+        description: '',
+        category: '',
+        brand: '',
+        color: '',
+        storage: '',
+        size: '',
+        connectivity: '',
+        images: [],
+      });
+      setModal(false);
+    } catch (error) {
+      errorNotification('An error occurred while handling the product.');
+      console.error('Error:', error);
     }
   };
+
 
   const handleDeleteProduct = async (id: string) => {
     try {
@@ -108,6 +122,24 @@ const Products: React.FC = () => {
     } catch (error) {
       errorNotification('Failed to delete product');
     }
+  };
+
+  const handleEditProduct = (product: any) => {
+    setEditMode(true);
+    setEditProductId(product._id);
+    setProductData({
+      name: product.name,
+      price: product.price,
+      description: product.description,
+      category: product.category._id,
+      brand: product.brand._id,
+      color: product.color._id,
+      storage: product.storage?._id || '',
+      size: product.size?._id || '',
+      connectivity: product.connectivity?._id || '',
+      images: product.images || []
+    });
+    setModal(true);
   };
 
   const fetchProduct = async () => {
@@ -127,11 +159,17 @@ const Products: React.FC = () => {
       setStorages(storages);
       setSizes(sizes);
       setConnectivities(connectivities);
-      setProducts(products);
+      setFilteredProducts(products);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
+
+  const handlePageChange = (newPage: number, pageSize: number) => {
+    setPage(newPage);
+  };
+
+  const paginatedProducts = filteredProducts.slice((page - 1) * rowsPerPage, page * rowsPerPage);
 
   useEffect(() => {
     fetchProduct()
@@ -148,7 +186,7 @@ const Products: React.FC = () => {
           </button>
         </div>
         {modal && (
-          <Modal title='Add Product' handleClose={handleModal} >
+          <Modal title={editMode ? 'Edit Product' : 'Add Product'} handleClose={handleModal} >
             <form onSubmit={handleSubmit}>
               <div className="form-group mb-3">
                 <label>Name<sup className='text-danger fs-6'>*</sup></label>
@@ -274,25 +312,23 @@ const Products: React.FC = () => {
                     <input id="dropzone-file" type="file" className="d-none" onChange={handleImageChange} multiple />
                   </label>
                 </div>
-                <div className="selected-images d-flex mt-3 flex-wrap gap-3">
-                  {productData.images.length > 0 &&
-                    productData.images.map((image, index) => {
-                      const imageUrl = typeof image === 'string' ? image : URL.createObjectURL(image as File);
+                <div className="image-preview">
+                  <div className="row">
+                    {productData.images.map((image, index) => {
+                      const imageURL = typeof image === 'string' ? image : URL.createObjectURL(image);
                       return (
-                        <div key={index} className="col-12 col-sm-12 col-md-3 col-lg-3">
-                          <img
-                            key={index}
-                            src={imageUrl}
-                            alt={`Selected ${index}`}
-                            className="img-thumbnail m-2"
-                          />
+                        <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3">
+                          <div className="preview-image border p-2">
+                            <img className="img-fluid" src={imageURL} alt={productData.name} width={150} height={150} />
+                          </div>
                         </div>
                       );
                     })}
+                  </div>
                 </div>
               </div>
               <div className="d-flex justify-content-end">
-                <button type="submit" className="btn btn-primary">Add Product</button>
+                <button type="submit" className="btn btn-primary">{editMode ? 'Update Product' : 'Add Product'}</button>
               </div>
             </form>
           </Modal>
@@ -316,8 +352,8 @@ const Products: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {products.length > 0 ? (
-                products.map((item, index) => (
+              {paginatedProducts.length > 0 ? (
+                paginatedProducts.map((item, index) => (
                   <tr key={index} className='text-center align-middle'>
                     <td className="align-middle">{item._id}</td>
                     <td className="align-middle">
@@ -348,7 +384,7 @@ const Products: React.FC = () => {
                     <td className="align-middle">
                       <div className='d-flex align-items-center justify-content-center'>
                         <button onClick={() => handleDeleteProduct(item._id)} className='border-0 bg-transparent text-danger fs-5'><FaRegTrashCan /></button>
-                        <button className='border-0 bg-transparent text-primary fs-5'><FaRegEdit /></button>
+                        <button onClick={() => handleEditProduct(item)} className='border-0 bg-transparent text-primary fs-5'><FaRegEdit /></button>
                       </div>
                     </td>
                   </tr>
@@ -360,6 +396,15 @@ const Products: React.FC = () => {
               )}
             </tbody>
           </table>
+          {filteredProducts.length > rowsPerPage && (
+            <Pagination
+              total={filteredProducts.length}
+              current={page}
+              onChange={handlePageChange}
+              pageSize={rowsPerPage}
+              className="mt-3 d-flex justify-content-center"
+            />
+          )}
         </div>
       </div>
       <Notification />

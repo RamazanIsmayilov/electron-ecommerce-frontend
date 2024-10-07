@@ -74,3 +74,15 @@ export const searchStorages = async (query: string) => {
         console.error('Error while searching storages:', error);
     }
 }
+
+export const searchProducts = async (query: string) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/products/search`, {
+            params: { query },
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        return response.data
+    } catch (error) {
+        console.error('Error while searching products:', error);
+    }
+}

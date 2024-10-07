@@ -8,7 +8,7 @@ export const addConnectivity = async (brandName: string) => {
         const response = await axios.post(BASE_URL, { name: brandName }, { headers: { Authorization: `Bearer ${token}` } });
         return response.data
     } catch (error) {
-        console.error(error)
+        console.error('Failed to add connectivity', error);
     }
 };
 
@@ -19,7 +19,7 @@ export const getConnectivities = async () => {
         )
         return response.data
     } catch (error) {
-        console.error('Failed to fetch brands', error);
+        console.error('Failed to fetch connectivities', error);
     }
 }
 
@@ -30,7 +30,7 @@ export const deleteConnectivity = async (id: string) => {
         })
         return response.data
     } catch (error) {
-        console.error('Failed to delete brand', error);
+        console.error('Failed to delete connectivity', error);
     }
 }
 
@@ -43,6 +43,6 @@ export const updateConnectivity = async (id: string, updatedName: string) => {
         )
         return response.data
     } catch (error) {
-        console.error('Failed to update brand', error);
+        console.error('Failed to update connectivity', error);
     }
 }

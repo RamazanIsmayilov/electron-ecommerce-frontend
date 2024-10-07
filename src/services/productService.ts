@@ -37,6 +37,20 @@ export const deleteProduct = async (id: string) => {
         })
         return response.data
     } catch (error) {
-        console.error('Failed to delete brand', error);
+        console.error('Failed to delete product', error);
+    }
+}
+
+export const updateProduct = async (id: string, formData: FormData) => {
+    try {
+        const response = await axios.put(`${BASE_URL}/${id}`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                Authorization: `Bearer ${token}`
+            }
+        })
+        return response.data
+    } catch (error) {
+        console.error('Failed to update product', error);
     }
 }
