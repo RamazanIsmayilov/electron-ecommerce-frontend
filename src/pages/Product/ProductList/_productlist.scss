@@ -14,7 +14,7 @@
         .container {
             button {
                 background-color: $white;
-                border: 1px solid $white;
+                border: 1px solid #ccc;
                 transition: .3s;
 
                 span {
@@ -43,12 +43,6 @@
                         font-size: 18px;
                     }
 
-                    button {
-                        background-color: $brightBlue;
-                        font-size: 11px;
-                        padding: 8px 13px;
-                    }
-
                     span {
                         font-size: 13px;
                         letter-spacing: .5px;
@@ -59,7 +53,8 @@
                 .brand-filter,
                 .color-filter,
                 .connectivity-filter,
-                .size-filter {
+                .size-filter,
+                .storage-filter {
                     border-bottom: 1px solid $lightGray;
 
                     h6 {
@@ -68,6 +63,7 @@
 
                     span {
                         font-size: 13px;
+                        letter-spacing: .5px;
                     }
                 }
             }

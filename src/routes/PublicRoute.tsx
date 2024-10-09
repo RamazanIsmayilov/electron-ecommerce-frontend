@@ -5,8 +5,8 @@ import About from '../pages/About/About';
 import Contact from '../pages/Contact/Contact';
 import BlogList from '../pages/Blog/BlogList/BlogList';
 import BlogDetails from '../pages/Blog/BlogDetails/BlogDetails';
-// import ProductList from '../pages/Product/ProductList/ProductList';
-// import ProductDetails from '../pages/Product/ProductDetails/ProductDetails';
+import ProductList from '../pages/Product/ProductList/ProductList';
+import ProductDetails from '../pages/Product/ProductDetails/ProductDetails';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import ForgotPassword from '../pages/ForgotPassword/ForgotPassword';
@@ -29,8 +29,8 @@ const App: React.FC = () => {
                 <Route path='/faq' element={<Faq />} />
                 <Route path='/blog' element={<BlogList />} />
                 <Route path='/blogdetails' element={<BlogDetails />} />
-                {/* <Route path='/shop' element={<ProductList />} /> */}
-                {/* <Route path='/shop/:productId' element={<ProductDetails />} /> */}
+                <Route path='/shop' element={<ProductList />} />
+                <Route path='/shop/:productId' element={<ProductDetails />} />
                 <Route path='/wishlist' element={<Wishlist />} />
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/login' element={<Login />} />
