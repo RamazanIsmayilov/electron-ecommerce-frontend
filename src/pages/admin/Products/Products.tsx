@@ -37,7 +37,7 @@ const Products: React.FC = () => {
     description: '',
     category: '',
     brand: '',
-    color: '',
+    color: [] as string[],
     storage: '',
     size: '',
     connectivity: '',
@@ -74,7 +74,7 @@ const Products: React.FC = () => {
     formData.append('description', description);
     formData.append('category', category);
     formData.append('brand', brand);
-    formData.append('color', color);
+    formData.append('color', JSON.stringify(color));
     formData.append('storage', productData.storage);
     formData.append('size', productData.size);
     formData.append('connectivity', productData.connectivity);
@@ -100,7 +100,7 @@ const Products: React.FC = () => {
         description: '',
         category: '',
         brand: '',
-        color: '',
+        color: [],
         storage: '',
         size: '',
         connectivity: '',
@@ -133,7 +133,7 @@ const Products: React.FC = () => {
       description: product.description,
       category: product.category._id,
       brand: product.brand._id,
-      color: product.color._id,
+      color: product.color.map((color: any) => color._id) || [],
       storage: product.storage?._id || '',
       size: product.size?._id || '',
       connectivity: product.connectivity?._id || '',
@@ -249,6 +249,7 @@ const Products: React.FC = () => {
                 <Select
                   id="color"
                   className="w-100"
+                  mode='multiple'
                   placeholder="Select color"
                   value={productData.color}
                   onChange={(value) => setProductData({ ...productData, color: value })}
@@ -369,7 +370,7 @@ const Products: React.FC = () => {
                       <div className="d-flex align-items-center justify-content-center">
                         <div
                           className="color rounded-circle"
-                          style={{ backgroundColor: `${item.color?.name}`, width: '17px', height: '17px' }}
+                          style={{ backgroundColor: `${item.color[0]?.name}`, width: '17px', height: '17px' }}
                         ></div>
                       </div>
                     </td>
