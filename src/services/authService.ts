@@ -1,5 +1,5 @@
 import axios from 'axios'
-const BASE_URL = 'http://localhost:5001/auth'
+const BASE_URL = 'https://coppola-movie.vercel.app/api/auth'
 
 export const login = async (email: string, password: string) => {
     try {

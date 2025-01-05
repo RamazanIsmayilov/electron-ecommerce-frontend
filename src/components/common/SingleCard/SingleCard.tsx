@@ -16,7 +16,6 @@ const SingleCard: React.FC = () => {
   const fetchProducts = async () => {
     const response = await getProducts();
     setProducts(response);
-    console.log(response);
   };
 
   useEffect(() => {
@@ -68,15 +67,18 @@ const SingleCard: React.FC = () => {
             <div className="price mt-2 fw-bold">
               <span className="new-price">${item.price}</span>
             </div>
-            <div className="color">
-              <button
-                className="rounded-circle p-2 border-0"
-                style={{
-                  backgroundColor: `${item.color.name}`,
-                  width: "8px",
-                  height: "8px",
-                }}
-              ></button>
+            <div className="color d-flex gap-1 mt-2">
+              {item.color.map((color: { name: string }, index: number) => (
+                <button
+                  key={index}
+                  className="rounded-circle p-2 border-0"
+                  style={{
+                    backgroundColor: color.name,
+                    width: "8px",
+                    height: "8px",
+                  }}
+                ></button>
+              ))}
             </div>
             <div className="description mt-3">
               <p>
